@@ -12,11 +12,10 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import MailIcon from '@mui/icons-material/Mail';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import LightModeIcon from '@mui/icons-material/LightMode';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -100,8 +99,9 @@ function Navbar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+          <MenuItem onClick={handleMenuClose}>Login</MenuItem>
+          {/* user olduğunda Logout user yoksa Login yazacak */}
+      
     </Menu>
   );
 
@@ -123,24 +123,24 @@ function Navbar() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
-            <MailIcon />
+        <IconButton size="large"  color="inherit">
+          <Badge  color="error">
+            <FavoriteBorderIcon/>
           </Badge>
         </IconButton>
-        <p>Messages</p>
+        <p>Favourites</p>
       </MenuItem>
       <MenuItem>
         <IconButton
           size="large"
-          aria-label="show 17 new notifications"
+         
           color="inherit"
         >
-          <Badge badgeContent={17} color="error">
-            <NotificationsIcon />
+          <Badge badgeContent={2} color="error">
+            <AddShoppingCartIcon/>
           </Badge>
         </IconButton>
-        <p>Notifications</p>
+        <p>Basket</p>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
@@ -152,12 +152,13 @@ function Navbar() {
         >
           <AccountCircle />
         </IconButton>
-        <p>Profile</p>
+        <p>LogIn</p>
       </MenuItem>
     </Menu>
   );
-
-  return (
+const handleChangeMode=()=>{}
+ 
+    return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{bgcolor:"warning.main"}}>
         <Toolbar>
@@ -212,7 +213,14 @@ function Navbar() {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <AccountCircle />
+             <AccountCircle />
+                          
+            </IconButton>
+             <IconButton size="large"
+              aria-label="show 17 new notifications"
+                          color="inherit" onClick={handleChangeMode}> 
+                          {/* click olduğunda reduxtaki state değişecek dark/light */}
+            <LightModeIcon />
             </IconButton>
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
