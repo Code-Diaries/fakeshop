@@ -16,6 +16,7 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import LightModeIcon from '@mui/icons-material/LightMode';
+import {useNavigate } from 'react-router-dom';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -58,7 +59,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-function Navbar() {
+const Navbar=()=>{
+
+
+    // const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -104,9 +108,12 @@ function Navbar() {
       
     </Menu>
   );
+ 
+  
 
   const mobileMenuId = 'primary-search-account-menu-mobile';
-  const renderMobileMenu = (
+    const renderMobileMenu = (
+      
     <Menu
       anchorEl={mobileMoreAnchorEl}
       anchorOrigin={{
@@ -120,7 +127,8 @@ function Navbar() {
         horizontal: 'right',
       }}
       open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}
+          onClose={handleMobileMenuClose}
+          
     >
       <MenuItem>
         <IconButton size="large"  color="inherit">
@@ -144,21 +152,22 @@ function Navbar() {
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
-          size="large"
+          size="medium"
           aria-label="account of current user"
           aria-controls="primary-search-account-menu"
           aria-haspopup="true"
-          color="inherit"
+                  color="inherit"
+                //   onClick={()=>navigate("/login")}
         >
           <AccountCircle />
         </IconButton>
-        <p>LogIn</p>
+              <p >LogIn/LogOut</p>
+              
       </MenuItem>
     </Menu>
-  );
-const handleChangeMode=()=>{}
- 
-    return (
+    );
+  
+  return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{bgcolor:"warning.main"}}>
         <Toolbar>
@@ -218,8 +227,7 @@ const handleChangeMode=()=>{}
             </IconButton>
              <IconButton size="large"
               aria-label="show 17 new notifications"
-                          color="inherit" onClick={handleChangeMode}> 
-                          {/* click olduğunda reduxtaki state değişecek dark/light */}
+            color="inherit">
             <LightModeIcon />
             </IconButton>
           </Box>
