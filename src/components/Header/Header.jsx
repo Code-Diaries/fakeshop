@@ -182,7 +182,7 @@ const Header = () => {
                         justifyContent="space-evenly"
                         flexWrap="wrap"
                     >
-                        {(find.length ? find : displayArray)
+                        {(find?.length ? find : displayArray)
                             ?.map((item, index) => (
                                 <Card sx={{ maxWidth: 345, maxHeight: 700, minHeight: 700, margin: 2 }} key={index}>
                                     <CardMedia
