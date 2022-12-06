@@ -93,8 +93,10 @@ const Header = () => {
         e.preventDefault()
 
         displayArray = displayArray.filter((item) => {
+            console.log(item.title);
             return (
-                item.title.includes(search) === true
+
+                item.title.toLowerCase().includes(search.toLowerCase()) === true
             )
         })
 
