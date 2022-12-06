@@ -3,6 +3,7 @@ import axios from "axios";
 
 const initialState = {
     categoryList: [],
+    choosen: "",
     loadingCategory: false,
     errorCategory: false,
 };
@@ -14,8 +15,9 @@ export const getCategory = createAsyncThunk(
         const url = `https://fakestoreapi.com/products/categories`;
 
         try {
-            const data = await axios(url);
+            const { data } = await axios(url);
             console.log(data)
+            return data;
         } catch (error) {
             console.log(error);
             return rejectWithValue("Something went wrong");
@@ -27,8 +29,9 @@ const categorySlice = createSlice({
     name: "category",
     initialState,
     reducers: {
-        selectCategory: (state) => {
-            // state.newsList = [];
+        setChoosen: (state, { payload }) => {
+            state.choosen = payload;
+
         },
     },
     extraReducers: (builder) => {
@@ -37,7 +40,7 @@ const categorySlice = createSlice({
                 state.loading = true;
             })
             .addCase(getCategory.fulfilled, (state, { payload }) => {
-                state.productList = payload;
+                state.categoryList = payload;
                 state.loadingCategory = false;
             })
             .addCase(getCategory.rejected, (state, { payload }) => {
@@ -47,6 +50,6 @@ const categorySlice = createSlice({
     },
 });
 
-export const { selectCategory } = categorySlice.actions;
+export const { setChoosen } = categorySlice.actions;
 
 export default categorySlice.reducer;

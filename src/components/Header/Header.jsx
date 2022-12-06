@@ -12,25 +12,42 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProduct } from '../../features/productSlice/productSlice';
-import { getCategory } from '../../features/categorySlice/categorySlice';
+import { getProduct, setProduct } from '../../features/productSlice/productSlice';
+import { getCategory, setChoosen } from '../../features/categorySlice/categorySlice';
+import { getFilter } from '../../features/filterSlice/filterSlice';
 
 
 
 const Header = () => {
     const { productList, loading, error } = useSelector((state) => state.product);
-    const { categoryList, loadingCategory, errorCategory } = useSelector((state) => state.category);
+    const { categoryList, choosen, loadingCategory, errorCategory } = useSelector((state) => state.category);
+    const { filteredList, loadingFilter, errorFilter } = useSelector((state) => state.filter);
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getProduct())
+        dispatch(getCategory())
     }, [])
+
+    const handleChange = (e) => {
+
+        dispatch(setChoosen(e.target.value))
+        dispatch(getFilter())
+        console.log("here")
+
+
+
+
+    }
+    dispatch(setProduct(filteredList))
+
+
+    console.log(categoryList)
+    console.log(choosen);
+
+    console.log(filteredList);
     console.log(productList);
 
-    const handleChange = () => {
-        dispatch(getCategory())
-    }
-    console.log(categoryList)
 
     return (
         <>
@@ -59,12 +76,11 @@ const Header = () => {
                             <Select
                                 labelId="demo-simple-select-label"
                                 id="demo-simple-select"
-                                // value={age}
                                 label="Select Category"
                                 onChange={handleChange}
                             >
                                 {categoryList?.map((item, index) => (
-                                    <MenuItem value={10} key={index}>{ }</MenuItem>
+                                    <MenuItem value={item} key={index}>{item}</MenuItem>
                                 ))}
                             </Select>
                         </FormControl>
@@ -111,7 +127,7 @@ const Header = () => {
                                         Rate: {item?.rating?.rate}
                                     </Typography>
                                     <Typography variant="h3" color="orange">
-                                        {item?.price}
+                                        {item?.price} TL
                                     </Typography>
                                 </CardContent>
                                 <CardActions>
