@@ -19,7 +19,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProduct } from '../../features/productSlice/productSlice';
 import { getCategory, setChoosen } from '../../features/categorySlice/categorySlice';
-import { getFilter } from '../../features/filterSlice/filterSlice';
+import { getFilter, setFind } from '../../features/filterSlice/filterSlice';
 import { setSearch } from '../../features/searchSlice/searchSlice';
 
 const Search = styled('div')(({ theme }) => ({
@@ -70,7 +70,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const Header = () => {
     const { productList, loading, error } = useSelector((state) => state.product);
     const { categoryList, loadingCategory, errorCategory } = useSelector((state) => state.category);
-    const { filteredList, loadingFilter, errorFilter } = useSelector((state) => state.filter);
+    const { filteredList, find, loadingFilter, errorFilter } = useSelector((state) => state.filter);
     const { search } = useSelector((state) => state.search);
     const dispatch = useDispatch();
     let displayArray = (filteredList.length ? filteredList : productList)
@@ -79,13 +79,14 @@ const Header = () => {
     useEffect(() => {
         dispatch(getProduct())
         dispatch(getCategory())
+
     }, [])
 
     const handleChange = (e) => {
 
         dispatch(setChoosen(e.target.value))
         dispatch(getFilter())
-        console.log("here")
+
     }
 
     const handleSubmit = (e) => {
@@ -97,12 +98,12 @@ const Header = () => {
             )
         })
 
-        console.log(displayArray)
+        dispatch(setFind(displayArray))
 
     }
     console.log(productList);
     console.log(search);
-    console.log(displayArray)
+    console.log(find)
 
     return (
         <>
@@ -181,33 +182,34 @@ const Header = () => {
                         justifyContent="space-evenly"
                         flexWrap="wrap"
                     >
-                        {displayArray?.map((item, index) => (
-                            <Card sx={{ maxWidth: 345, maxHeight: 700, minHeight: 700, margin: 2 }} key={index}>
-                                <CardMedia
-                                    component="img"
-                                    alt={item?.title}
-                                    height="250"
-                                    image={item?.image}
-                                />
-                                <CardContent>
-                                    <Typography gutterBottom variant="h6" component="div">
-                                        {item?.title}
-                                    </Typography>
-                                    <Typography variant="body2" color="grey">
-                                        {item?.description}
-                                    </Typography>
-                                    <Typography variant="h6" color="primary">
-                                        Rate: {item?.rating?.rate}
-                                    </Typography>
-                                    <Typography variant="h3" color="orange">
-                                        {item?.price} TL
-                                    </Typography>
-                                </CardContent>
-                                <CardActions>
-                                    <Button size="small">Sepete Ekle</Button>
-                                </CardActions>
-                            </Card>
-                        ))}
+                        {(find.length ? find : displayArray)
+                            ?.map((item, index) => (
+                                <Card sx={{ maxWidth: 345, maxHeight: 700, minHeight: 700, margin: 2 }} key={index}>
+                                    <CardMedia
+                                        component="img"
+                                        alt={item?.title}
+                                        height="250"
+                                        image={item?.image}
+                                    />
+                                    <CardContent>
+                                        <Typography gutterBottom variant="h6" component="div">
+                                            {item?.title}
+                                        </Typography>
+                                        <Typography variant="body2" color="grey">
+                                            {item?.description}
+                                        </Typography>
+                                        <Typography variant="h6" color="primary">
+                                            Rate: {item?.rating?.rate}
+                                        </Typography>
+                                        <Typography variant="h3" color="orange">
+                                            {item?.price} TL
+                                        </Typography>
+                                    </CardContent>
+                                    <CardActions>
+                                        <Button size="small">Sepete Ekle</Button>
+                                    </CardActions>
+                                </Card>
+                            ))}
                     </Box>
                 )}</>
         </>

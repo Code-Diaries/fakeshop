@@ -21,6 +21,7 @@ export const getFilter = createAsyncThunk(
 
         console.log(store.getState().category.choosen);
         const selected = store.getState().category.choosen
+
         //! asyn callback function
         const url = `https://fakestoreapi.com/products/category/${selected}`;
         try {
@@ -39,7 +40,9 @@ const filterSlice = createSlice({
     name: "filter",
     initialState,
     reducers: {
-
+        setFind: (state, { payload }) => {
+            state.find = payload
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -57,6 +60,6 @@ const filterSlice = createSlice({
     },
 });
 
-// export const {  } = filterSlice.actions;
+export const { setFind } = filterSlice.actions;
 
 export default filterSlice.reducer;
