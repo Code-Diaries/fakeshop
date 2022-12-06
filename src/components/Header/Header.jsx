@@ -83,7 +83,7 @@ const Header = () => {
     }, [])
 
     const handleChange = (e) => {
-
+        e.preventDefault()
         dispatch(setChoosen(e.target.value))
         dispatch(getFilter())
 
@@ -192,6 +192,7 @@ const Header = () => {
                                         alt={item?.title}
                                         height="250"
                                         image={item?.image}
+                                        style={{ objectFit: "cover", width: 200, height: 0 }}
                                     />
                                     <CardContent>
                                         <Typography gutterBottom variant="h6" component="div">
