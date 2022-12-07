@@ -12,9 +12,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProduct } from '../../features/productSlice/productSlice';
@@ -109,61 +107,64 @@ const Header = () => {
 
     return (
         <>
-            <>
-                <Box sx={{ flexGrow: 1 }} onSubmit={handleSubmit} component="form">
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <div>
+                    <Box sx={{ flexGrow: 1 }} onSubmit={handleSubmit} component="form" style={{ width: 500 }}>
 
-                    <Search >
-                        <SearchIconWrapper>
-                            <SearchIcon />
-                        </SearchIconWrapper>
-                        <StyledInputBase
-                            placeholder="Search…"
-                            inputProps={{ 'aria-label': 'search' }}
-                            onChange={(e) => dispatch(setSearch(e.target.value))}
-                            value={search}
-                        />
-                    </Search>
+                        <Search >
+                            <SearchIconWrapper>
+                                <SearchIcon />
+                            </SearchIconWrapper>
+                            <StyledInputBase
+                                placeholder="Search.."
+                                inputProps={{ 'aria-label': 'search' }}
+                                onChange={(e) => dispatch(setSearch(e.target.value))}
+                                value={search}
+                            />
+                        </Search>
 
-
-                </Box>
-            </>
-            <>
-                {errorCategory && (
-                    <Typography variant="h3" color="error" align="center" mt={20}>
-                        {error}
-                    </Typography>
-                )}
-                {loadingCategory && (
-                    <Box display="flex" alignItems="center" justifyContent="center">
-                        loading
-                    </Box>
-                )}
-                {!loadingCategory && (
-                    <Box
-                        xs={{ d: "flex" }}
-                        display="flex"
-                        alignItems="center"
-                        justifyContent="space-evenly"
-                        flexWrap="wrap"
-                    >
-
-                        <FormControl fullWidth>
-                            <InputLabel id="demo-simple-select-label">Select Category</InputLabel>
-                            <Select
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
-                                label="Select Category"
-                                onChange={handleChange}
-                            >
-                                {categoryList?.map((item, index) => (
-                                    <MenuItem value={item} key={index}>{item}</MenuItem>
-                                ))}
-                            </Select>
-                        </FormControl>
 
                     </Box>
-                )}
-            </>
+                </div>
+                <div>
+                    {errorCategory && (
+                        <Typography variant="h3" color="error" align="center" mt={20}>
+                            {error}
+                        </Typography>
+                    )}
+                    {loadingCategory && (
+                        <Box display="flex" alignItems="center" justifyContent="center">
+                            loading
+                        </Box>
+                    )}
+                    {!loadingCategory && (
+                        <Box
+                            xs={{ d: "flex" }}
+                            display="flex"
+                            alignItems="center"
+                            justifyContent="space-evenly"
+                            flexWrap="wrap"
+                        >
+
+                            <FormControl style={{ width: 500 }}>
+                                <InputLabel id="demo-simple-select-label">Select Category</InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    label="Select Category"
+                                    onChange={handleChange}
+                                >
+                                    {categoryList?.map((item, index) => (
+                                        <MenuItem value={item} key={index}>{item}</MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl>
+
+                        </Box>
+                    )}
+                </div>
+            </div>
+
 
             <>
                 {(errorFilter.length ? errorFilter : error) && (
@@ -186,20 +187,21 @@ const Header = () => {
                     >
                         {(find?.length ? find : displayArray)
                             ?.map((item, index) => (
-                                <Card sx={{ maxWidth: 345, maxHeight: 700, minHeight: 700, margin: 2 }} key={index}>
+                                <Card sx={{ maxWidth: 345, maxHeight: 850, minHeight: 850, margin: 2 }} key={index}>
                                     <CardMedia
                                         component="img"
                                         alt={item?.title}
                                         height="250"
                                         image={item?.image}
-                                        style={{ objectFit: "cover", width: 200, height: 0 }}
+                                        style={{ objectFit: "contain", width: 350, height: 250, }}
                                     />
                                     <CardContent>
                                         <Typography gutterBottom variant="h6" component="div">
                                             {item?.title}
                                         </Typography>
-                                        <Typography variant="body2" color="grey">
+                                        <Typography variant="subtitle" color="grey" >
                                             {item?.description}
+
                                         </Typography>
                                         <Typography variant="h6" color="primary">
                                             Rate: {item?.rating?.rate}
