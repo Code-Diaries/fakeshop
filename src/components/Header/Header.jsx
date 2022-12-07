@@ -196,7 +196,7 @@ const Header = () => {
                                         style={{ objectFit: "contain", width: 350, height: 250, }}
                                     />
                                     <CardContent>
-                                        <Typography gutterBottom variant="h6" component="div">
+                                        <Typography gutterBottom variant="h6" component="div" >
                                             {item?.title}
                                         </Typography>
                                         <Typography variant="subtitle" color="grey" >
