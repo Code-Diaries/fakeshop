@@ -63,6 +63,7 @@ const Navbar=()=>{
 
 
     // const navigate = useNavigate();
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -157,7 +158,8 @@ const Navbar=()=>{
           aria-controls="primary-search-account-menu"
           aria-haspopup="true"
                   color="inherit"
-                //   onClick={()=>navigate("/login")}
+                    // onClick={() => navigate("/login")} 
+                    // redirect gelecek
         >
           <AccountCircle />
         </IconButton>
@@ -166,6 +168,7 @@ const Navbar=()=>{
       </MenuItem>
     </Menu>
     );
+
   
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -228,8 +231,10 @@ const Navbar=()=>{
              <IconButton size="large"
               aria-label="show 17 new notifications"
             color="inherit">
-            <LightModeIcon />
-            </IconButton>
+                          <LightModeIcon /> 
+                          {/* karanlıksa light mode aydılıksa dark mode ikon */}
+                      </IconButton>
+
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton

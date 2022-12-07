@@ -1,4 +1,5 @@
 
+import  Login  from  "../pages/Login"
 import React from 'react'
 import { BrowserRouter,Routes,Route} from 'react-router-dom'
 import Navbar from '../components/Navbar/Navbar'
@@ -14,7 +15,7 @@ const AppRouter = () => {
       <BrowserRouter>
           <Navbar/>
           <Routes>
-               <Route path='/' element={<HomePage/>}/>
+               <Route path='/' element={<Home/>}/>
                 <Route path='/login' element={<Login/>}/>
               <Route path='/productDetail' element={<PrivateRouter/>}>
               <Route path="" element={<ProductDetail/>}/>
