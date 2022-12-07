@@ -107,7 +107,7 @@ const Header = () => {
 
     return (
         <>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", marginTop: "2rem" }}>
                 <div>
                     <Box sx={{ flexGrow: 1 }} onSubmit={handleSubmit} component="form" style={{ width: 500 }}>
 
