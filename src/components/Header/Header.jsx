@@ -14,11 +14,13 @@ import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import Typography from '@mui/material/Typography';
 import SearchIcon from '@mui/icons-material/Search';
+import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProduct } from '../../features/productSlice/productSlice';
 import { getCategory, setChoosen } from '../../features/categorySlice/categorySlice';
 import { getFilter, setFind } from '../../features/filterSlice/filterSlice';
 import { setSearch } from '../../features/searchSlice/searchSlice';
+import { setFavorite } from '../../features/favoriteSlice/favoriteSlice';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -70,6 +72,7 @@ const Header = () => {
     const { categoryList, loadingCategory, errorCategory } = useSelector((state) => state.category);
     const { filteredList, find, loadingFilter, errorFilter } = useSelector((state) => state.filter);
     const { search } = useSelector((state) => state.search);
+    const { favorite } = useSelector((state) => state.favorite);
     const dispatch = useDispatch();
     let displayArray = (filteredList.length ? filteredList : productList)
 
@@ -101,9 +104,13 @@ const Header = () => {
         dispatch(setFind(displayArray))
 
     }
-    console.log(productList);
-    console.log(search);
-    console.log(find)
+    const handleFavorite = () => {
+        dispatch(setFavorite())
+    }
+    // console.log(productList);
+    // console.log(search);
+    // console.log(find)
+    console.log(favorite);
 
     return (
         <>
@@ -187,7 +194,14 @@ const Header = () => {
                     >
                         {(find?.length ? find : displayArray)
                             ?.map((item, index) => (
-                                <Card sx={{ maxWidth: 345, maxHeight: 850, minHeight: 850, margin: 2 }} key={index}>
+                                <Card sx={{ maxWidth: 345, maxHeight: 550, minHeight: 550, margin: 2, position: "relative" }} key={index}>
+
+                                    <FavoriteBorderRoundedIcon
+                                        onClick={handleFavorite}
+
+                                    />
+
+
                                     <CardMedia
                                         component="img"
                                         alt={item?.title}
@@ -196,21 +210,18 @@ const Header = () => {
                                         style={{ objectFit: "contain", width: 350, height: 250, }}
                                     />
                                     <CardContent>
-                                        <Typography gutterBottom variant="h6" component="div" >
+                                        <Typography gutterBottom variant="h6" component="div" minHeight={100}>
                                             {item?.title}
                                         </Typography>
-                                        <Typography variant="subtitle" color="grey" >
-                                            {item?.description}
 
-                                        </Typography>
-                                        <Typography variant="h6" color="primary">
+                                        <Typography variant="h6" color="primary" height="35">
                                             Rate: {item?.rating?.rate}
                                         </Typography>
-                                        <Typography variant="h3" color="orange">
+                                        <Typography variant="h3" color="orange" height="60">
                                             {item?.price} TL
                                         </Typography>
                                     </CardContent>
-                                    <CardActions>
+                                    <CardActions height="35">
                                         <Button size="small">Sepete Ekle</Button>
                                     </CardActions>
                                 </Card>
