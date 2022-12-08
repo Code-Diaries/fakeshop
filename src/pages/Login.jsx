@@ -118,10 +118,13 @@ function Login() {
       password: "",
     },
     validationSchema: validationSchema,
-    onSubmit: async (values) => {
+    onSubmit: async (e, values) => {
+      e.preventDefault();
       setLoading(true);
       try {
-        logIn(values.email, values.password, navigate);
+        const email = values.email
+        const password = values.password
+        logIn(email, password, navigate);
         //navigate("/");
        // toastSuccessNotify("Logged in successfully!");
       } catch (error) {
@@ -132,12 +135,12 @@ function Login() {
     },
   });
 
-  const handleGoogleProvider = () => {
+  const handleGoogleProvider = (e) => {
+    e.preventDefault();
     signUpWithGoogle(navigate);
+
   };
-  const newUser = (values) =>{
-    createUser(values.email, values.password, navigate)
-  }
+  
 
 //   useEffect(() => {
 //     if (currentUser) {

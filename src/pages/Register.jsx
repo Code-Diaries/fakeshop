@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { useNavigate } from "react-router-dom";
 //import { toastSuccessNotify, toastErrorNotify } from "../helpers/ToastNotify";
 import { useFormik } from "formik";
@@ -7,9 +7,9 @@ import loadingGif from "../assets/loading.gif";
 import googlePng from "../assets/google.png";
 import {Avatar,Button,CssBaseline,Grid,Paper,TextField,Typography,Box,} from "@mui/material";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { createUser, logIn, signUpWithGoogle } from "../auth/firebase";
+import { createUser, signUpWithGoogle } from "../auth/firebase";
 import { grey } from "@mui/material/colors";
-import { useDispatch } from "react-redux"
+
 
 
 
@@ -107,7 +107,7 @@ const styles = {
 function Register() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const dispatch = useDispatch();
+
 
  
 
@@ -118,15 +118,17 @@ function Register() {
       password: "",
     },
     validationSchema: validationSchema,
-    onSubmit: async (values) => {
+    onSubmit: async (e, values) => {
+      e.preventDefault();
         console.log(values)
         
       setLoading(true);
       try {
         const email = values.email
         const password = values.password
-        const name = values.name
-        createUser(email, password, navigate, name, dispatch);
+        const displayName = values.displayName
+
+        createUser(email, password, navigate, displayName);
         //navigate("/");
        // toastSuccessNotify("Logged in successfully!");
       } catch (error) {
@@ -137,7 +139,8 @@ function Register() {
     },
   });
 
-  const handleGoogleProvider = () => {
+  const handleGoogleProvider = (e) => {
+    e.preventDefault();
     signUpWithGoogle(navigate);
   };
 
@@ -169,16 +172,16 @@ function Register() {
                 variant="outlined"
                 margin="normal"
                 fullWidth
-                id="name"
-                label="Name"
-                name="name"
-                autoComplete="name"
+                id="displayName"
+                label="displayName"
+                name="displayName"
+                autoComplete="displayName"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 autoFocus
-                value={formik.values.name}
-                error={formik.touched.name && Boolean(formik.errors.name)}
-                helperText={formik.touched.name && formik.errors.name}
+                value={formik.values.displayName}
+                error={formik.touched.displayName && Boolean(formik.errors.displayName)}
+                helperText={formik.touched.displayName && formik.errors.displayName}
               />
               <TextField
               sx={{color : "grey"}}
