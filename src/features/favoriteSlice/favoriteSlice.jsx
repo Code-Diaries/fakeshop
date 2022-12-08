@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    favorite: false
+    favorite: false,
+
 }
 
 const favoriteSlice = createSlice({
@@ -10,7 +11,8 @@ const favoriteSlice = createSlice({
     reducers: {
         setFavorite: (state) => {
             state.favorite = !state.favorite
-        }
+        },
+
 
     }
 });

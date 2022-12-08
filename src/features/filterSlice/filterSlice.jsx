@@ -41,7 +41,8 @@ const filterSlice = createSlice({
     reducers: {
         setFind: (state, { payload }) => {
             state.find = payload
-        }
+        },
+
     },
     extraReducers: (builder) => {
         builder
