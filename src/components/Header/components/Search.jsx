@@ -2,12 +2,10 @@ import React from 'react'
 import SearchIcon from '@mui/icons-material/Search';
 import { InputBase, styled, alpha } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSearch } from '../../../features/searchSlice/searchSlice';
 
 
-const Search = ({ productList, filteredList, setFind }) => {
+const Search = ({ productList, filteredList, setFind ,search, setSearch}) => {
   const dispatch = useDispatch();
-  const { search } = useSelector((state) => state.search);
   let displayArray = (filteredList.length ? filteredList : productList)
 
   const handleSubmit = (e) => {
