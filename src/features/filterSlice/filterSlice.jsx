@@ -7,6 +7,7 @@ const initialState = {
     filteredList: [],
     loadingFilter: false,
     errorFilter: false,
+    find: ""
 };
 
 

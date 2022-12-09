@@ -21,7 +21,7 @@ import { getProduct } from '../../features/productSlice/productSlice';
 import { getCategory, setChoosen } from '../../features/categorySlice/categorySlice';
 import { getFilter, setFind } from '../../features/filterSlice/filterSlice';
 import { setSearch } from '../../features/searchSlice/searchSlice';
-import { setFavorite } from '../../features/favoriteSlice/favoriteSlice';
+import { setFavorite, setFavoriteList } from '../../features/favoriteSlice/favoriteSlice';
 import { red } from '@mui/material/colors';
 
 
@@ -75,10 +75,10 @@ const Header = () => {
     const { categoryList, loadingCategory, errorCategory } = useSelector((state) => state.category);
     const { filteredList, find, loadingFilter, errorFilter } = useSelector((state) => state.filter);
     const { search } = useSelector((state) => state.search);
-    const { favorite, id } = useSelector((state) => state.favorite);
+    const { favorite, favoriteList } = useSelector((state) => state.favorite);
     const dispatch = useDispatch();
     let displayArray = (filteredList.length ? filteredList : productList)
-    let favoriteList
+
 
 
     useEffect(() => {
@@ -110,7 +110,7 @@ const Header = () => {
     }
     const handleFavorite = (e) => {
 
-        favoriteList = (find?.length ? find : displayArray).filter((item) => {
+        let favoriteItems = (find?.length ? find : displayArray).filter((item) => {
             console.log(item.id);
             console.log(e.target.id);
             return (
@@ -118,7 +118,8 @@ const Header = () => {
                 item.id === Number(e.target.id)
             )
         })
-        console.log(favoriteList);
+        dispatch(setFavoriteList([...favoriteList, favoriteItems]))
+
 
     }
     console.log(productList);
@@ -126,6 +127,9 @@ const Header = () => {
     // console.log(search);
     // console.log(find)
     console.log(favorite);
+    console.log(favoriteList);
+    console.log(favoriteList[0]);
+
 
     return (
         <>
@@ -211,7 +215,7 @@ const Header = () => {
                             ?.map((item, index) => (
                                 <Card sx={{ maxWidth: 345, maxHeight: 550, minHeight: 550, margin: 2, position: "relative" }} key={index}>
                                     <div onClick={handleFavorite} style={{ position: "absolute", right: 0 }} >
-                                        {favorite ? <FavoriteRoundedIcon sx={{ color: red }} id={item?.id} />
+                                        {favoriteList.includes(item) ? <FavoriteRoundedIcon sx={{ color: red }} id={item?.id} />
                                             : <FavoriteBorderRoundedIcon
                                                 id={item?.id} />}
                                     </div>
