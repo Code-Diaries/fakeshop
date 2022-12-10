@@ -1,10 +1,7 @@
 import * as React from 'react';
 import { useEffect } from "react"; 
 import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+
 
 import Typography from '@mui/material/Typography';
 
@@ -15,6 +12,7 @@ import { getFilter, setFind } from '../../features/filterSlice/filterSlice';
 import { setSearch } from '../../features/searchSlice/searchSlice'; 
 import CardItem from './components/CardItem';
 import SearchCom from './components/SearchCom';
+import CategoryCom from './components/CategoryCom';
 
 
 
@@ -24,7 +22,7 @@ import SearchCom from './components/SearchCom';
 
 const Header = () => {
     const { productList, loading, error } = useSelector((state) => state.product);
-    const { categoryList, loadingCategory, errorCategory } = useSelector((state) => state.category);
+ 
     const { filteredList, find, loadingFilter, errorFilter } = useSelector((state) => state.filter);
 
 
@@ -35,56 +33,14 @@ const Header = () => {
         dispatch(getProduct())
         dispatch(getCategory())
 
-    }, [])
-
-    const handleChange = (e) => {
-        e.preventDefault()
-        dispatch(setChoosen(e.target.value))
-        dispatch(getFilter())
-    }
+    }, []) 
  
       return (
         <>
-            <div style={{ display: "flex", justifyContent: "space-between", marginTop: "2rem" }}>
-                <div>
-                     <SearchCom productList={productList} filteredList={filteredList} setFind={setFind} />
-                </div>
-                <div>
-                    {errorCategory && (
-                        <Typography variant="h3" color="error" align="center" mt={20}>
-                            {error}
-                        </Typography>
-                    )}
-                    {loadingCategory && (
-                        <Box display="flex" alignItems="center" justifyContent="center">
-                            loading
-                        </Box>
-                    )}
-                    {!loadingCategory && (
-                        <Box
-                            xs={{ d: "flex" }}
-                            display="flex"
-                            alignItems="center"
-                            justifyContent="space-evenly"
-                            flexWrap="wrap"
-                        > 
-                            <FormControl style={{ width: 500 }}>
-                                <InputLabel id="demo-simple-select-label">Select Category</InputLabel>
-                                <Select
-                                    labelId="demo-simple-select-label"
-                                    id="demo-simple-select"
-                                    label="Select Category"
-                                    onChange={handleChange}
-                                >
-                                    {categoryList?.map((item, index) => (
-                                        <MenuItem value={item} key={index}>{item}</MenuItem>
-                                    ))}
-                                </Select>
-                            </FormControl> 
-                        </Box>
-                    )}
-                </div>
-            </div> 
+            <div style={{ display: "flex", justifyContent: "space-between", marginTop: "2rem" }}> 
+                <SearchCom productList={productList} filteredList={filteredList} setFind={setFind} /> 
+                <CategoryCom />
+             </div> 
             <>
                 {(errorFilter.length ? errorFilter : error) && (
                     <Typography variant="h3" color="error" align="center" mt={20}>
