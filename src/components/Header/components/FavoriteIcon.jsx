@@ -1,7 +1,7 @@
 import React from 'react'
 import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
-import { setFavorite, setFavoriteItem, setFavoriteList } from '../../features/favoriteSlice/favoriteSlice';
+import { setFavorite, setFavoriteItem, setFavoriteList } from '../../../features/favoriteSlice/favoriteSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 const FavoriteIcon = ({ item }) => {
