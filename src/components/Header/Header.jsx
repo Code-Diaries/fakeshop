@@ -21,7 +21,7 @@ import { getProduct } from '../../features/productSlice/productSlice';
 import { getCategory, setChoosen } from '../../features/categorySlice/categorySlice';
 import { getFilter, setFind } from '../../features/filterSlice/filterSlice';
 import { setSearch } from '../../features/searchSlice/searchSlice';
-import { setFavorite, setFavoriteList } from '../../features/favoriteSlice/favoriteSlice';
+import { setFavorite, setFavoriteItem, setFavoriteList } from '../../features/favoriteSlice/favoriteSlice';
 import { red } from '@mui/material/colors';
 
 
@@ -75,7 +75,7 @@ const Header = () => {
     const { categoryList, loadingCategory, errorCategory } = useSelector((state) => state.category);
     const { filteredList, find, loadingFilter, errorFilter } = useSelector((state) => state.filter);
     const { search } = useSelector((state) => state.search);
-    const { favorite, favoriteList } = useSelector((state) => state.favorite);
+    const { favorite, favoriteList, favoriteItem } = useSelector((state) => state.favorite);
     const dispatch = useDispatch();
     let displayArray = (filteredList.length ? filteredList : productList)
 
@@ -110,7 +110,7 @@ const Header = () => {
     }
     const handleFavorite = (e) => {
 
-        let favoriteItems = (find?.length ? find : displayArray).filter((item) => {
+        let data = (find?.length ? find : displayArray).filter((item) => {
             console.log(item.id);
             console.log(e.target.id);
             return (
@@ -118,17 +118,32 @@ const Header = () => {
                 item.id === Number(e.target.id)
             )
         })
-        dispatch(setFavoriteList([...favoriteList, favoriteItems]))
+
+
+        dispatch(setFavoriteList([...favoriteList, {
+            favoriteItems: data[0],
+            favorite: true,
+            favoriteId: data[0].id
+        }]))
+        data = []
+
+        // favoriteList?.filter((i) => { i.favoriteId !== e.target.id })
+
+
+
+
+
 
 
     }
+
+
     console.log(productList);
-    console.log(productList.id);
+
     // console.log(search);
     // console.log(find)
-    console.log(favorite);
+    console.log(favoriteItem);
     console.log(favoriteList);
-    console.log(favoriteList[0]);
 
 
     return (
@@ -215,8 +230,15 @@ const Header = () => {
                             ?.map((item, index) => (
                                 <Card sx={{ maxWidth: 345, maxHeight: 550, minHeight: 550, margin: 2, position: "relative" }} key={index}>
                                     <div onClick={handleFavorite} style={{ position: "absolute", right: 0 }} >
-                                        {favoriteList.includes(item) ? <FavoriteRoundedIcon sx={{ color: red }} id={item?.id} />
-                                            : <FavoriteBorderRoundedIcon
+                                        {favoriteList.length
+                                            ? favoriteList.map((i) => {
+
+                                                return (
+                                                    ((i.favoriteId === item?.id) && (i.favorite === true)) ? <FavoriteRoundedIcon id={item?.id} />
+                                                        : <FavoriteBorderRoundedIcon
+                                                            id={item?.id} />
+                                                )
+                                            }) : <FavoriteBorderRoundedIcon
                                                 id={item?.id} />}
                                     </div>
 
