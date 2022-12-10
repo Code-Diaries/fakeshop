@@ -21,7 +21,6 @@ import { getCategory, setChoosen } from '../../features/categorySlice/categorySl
 import { getFilter, setFind } from '../../features/filterSlice/filterSlice';
 import { setSearch } from '../../features/searchSlice/searchSlice';
 
-import { red } from '@mui/material/colors';
 import FavoriteIcon from './FavoriteIcon';
 
 
