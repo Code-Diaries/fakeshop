@@ -16,7 +16,7 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import LightModeIcon from '@mui/icons-material/LightMode';
-import {useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -59,10 +59,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-const Navbar=()=>{
+const Navbar = () => {
 
 
-    // const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -104,17 +104,17 @@ const Navbar=()=>{
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-          <MenuItem onClick={handleMenuClose}>Login</MenuItem>
-          {/* user olduğunda Logout user yoksa Login yazacak */}
-      
+      <MenuItem onClick={handleMenuClose}>Login</MenuItem>
+      {/* user olduğunda Logout user yoksa Login yazacak */}
+
     </Menu>
   );
- 
-  
+
+
 
   const mobileMenuId = 'primary-search-account-menu-mobile';
-    const renderMobileMenu = (
-      
+  const renderMobileMenu = (
+
     <Menu
       anchorEl={mobileMoreAnchorEl}
       anchorOrigin={{
@@ -128,13 +128,13 @@ const Navbar=()=>{
         horizontal: 'right',
       }}
       open={isMobileMenuOpen}
-          onClose={handleMobileMenuClose}
-          
+      onClose={handleMobileMenuClose}
+
     >
       <MenuItem>
-        <IconButton size="large"  color="inherit">
-          <Badge  color="error">
-            <FavoriteBorderIcon/>
+        <IconButton size="large" color="inherit">
+          <Badge color="error">
+            <FavoriteBorderIcon />
           </Badge>
         </IconButton>
         <p>Favourites</p>
@@ -142,11 +142,11 @@ const Navbar=()=>{
       <MenuItem>
         <IconButton
           size="large"
-         
+
           color="inherit"
         >
           <Badge badgeContent={2} color="error">
-            <AddShoppingCartIcon/>
+            <AddShoppingCartIcon />
           </Badge>
         </IconButton>
         <p>Basket</p>
@@ -157,22 +157,22 @@ const Navbar=()=>{
           aria-label="account of current user"
           aria-controls="primary-search-account-menu"
           aria-haspopup="true"
-                  color="inherit"
-                    // onClick={() => navigate("/login")} 
-                    // redirect gelecek
+          color="inherit"
+        // onClick={() => navigate("/login")} 
+        // redirect gelecek
         >
           <AccountCircle />
         </IconButton>
-              <p >LogIn/LogOut</p>
-              
+        <p >LogIn/LogOut</p>
+
       </MenuItem>
     </Menu>
-    );
+  );
 
-  
+
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{bgcolor:"warning.main"}}>
+      <AppBar position="static" sx={{ bgcolor: "warning.main" }}>
         <Toolbar>
           <IconButton
             size="large"
@@ -189,7 +189,10 @@ const Navbar=()=>{
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
-            FAKESHOP
+            <Link to="/" >
+              FAKESHOP
+            </Link>
+
           </Typography>
           <Search>
             <SearchIconWrapper>
@@ -200,20 +203,20 @@ const Navbar=()=>{
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
-                  <Box sx={{ flexGrow: 1 }} />
+          <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
               <Badge color="error">
-              <FavoriteBorderIcon/>
+                <FavoriteBorderIcon />
               </Badge>
             </IconButton>
             <IconButton
               size="large"
               aria-label="show 17 new notifications"
               color="inherit">
-            <Badge badgeContent={2} color="error">  
+              <Badge badgeContent={2} color="error">
                 {/* burdaki badge contente state gelecek */}
-              <AddShoppingCartIcon/>
+                <AddShoppingCartIcon />
               </Badge>
             </IconButton>
             <IconButton
@@ -225,15 +228,18 @@ const Navbar=()=>{
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-             <AccountCircle />
-                          
+              <Link to="/login">
+                <AccountCircle />
+              </Link>
+
+
             </IconButton>
-             <IconButton size="large"
+            <IconButton size="large"
               aria-label="show 17 new notifications"
-            color="inherit">
-                          <LightModeIcon /> 
-                          {/* karanlıksa light mode aydılıksa dark mode ikon */}
-                      </IconButton>
+              color="inherit">
+              <LightModeIcon />
+              {/* karanlıksa light mode aydılıksa dark mode ikon */}
+            </IconButton>
 
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
