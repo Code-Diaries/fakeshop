@@ -7,8 +7,7 @@ import Login from './pages/Login';
 import { useDispatch, useSelector } from 'react-redux';
 import { userObserver } from './auth/firebase';
 
-import AllProduct from './components/AllProduct';
-import Head from './components/Head';
+
 
 
 function App() {
@@ -24,9 +23,8 @@ function App() {
   return (
     <div className="App">
       <Navbar/>
-     <Head/>
-       <AllProduct/>
-       {/* <Login/> */}
+    
+       <Login/>
       {/* <Register/> */}
      
     </div>
