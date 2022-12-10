@@ -3,7 +3,6 @@ import categoryReducer from "../features/categorySlice/categorySlice";
 import productReducer from "../features/productSlice/productSlice"
 import filterReducer from "../features/filterSlice/filterSlice"
 import searchReducer from "../features/searchSlice/searchSlice";
-import favoriteSliceReducer from "../features/favoriteSlice/favoriteSlice";
 import favSliceReducer from "../features/favoriteSlice/favSlice";
 
 
@@ -13,7 +12,6 @@ const store = configureStore({
     category: categoryReducer,
     filter: filterReducer,
     search: searchReducer,
-    favorite: favoriteSliceReducer,
     fav: favSliceReducer,
 
   },
