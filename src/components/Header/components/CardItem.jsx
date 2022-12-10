@@ -6,12 +6,23 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from './FavoriteIcon';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToFavoriteList, removeFromFavouriteList } from '../../../features/favoriteSlice/favoriteSlice';
 
 
 const CardItem = ({ item, index }) => {
+    const dispatch = useDispatch()
+    const { favoriteList } = useSelector(state => state.favorite)
+
+    const favoriteHandler = (item) => {
+        if (favoriteList.includes(item)) {
+          return  dispatch(removeFromFavouriteList(item))
+        }
+       return dispatch(addToFavoriteList(item))
+    }
     return (
         <Card sx={{ maxWidth: 345, maxHeight: 550, minHeight: 550, margin: 2, position: "relative" }} key={index}>
-            <div style={{ position: "absolute", right: 0 }} >
+            <div style={{ position: "absolute", right: 0 }} onClick={() => favoriteHandler(item)}>
                 <FavoriteIcon item={item} />
             </div>
 

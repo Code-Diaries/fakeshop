@@ -1,31 +1,19 @@
 import * as React from 'react';
 import { useEffect } from "react"; 
 import Box from '@mui/material/Box';
-
-
-import Typography from '@mui/material/Typography';
-
+import Typography from '@mui/material/Typography'; 
 import { useDispatch, useSelector } from 'react-redux';
 import { getProduct } from '../../features/productSlice/productSlice';
-import { getCategory, setChoosen } from '../../features/categorySlice/categorySlice';
-import { getFilter, setFind } from '../../features/filterSlice/filterSlice';
-import { setSearch } from '../../features/searchSlice/searchSlice'; 
-import CardItem from './components/CardItem';
+import { getCategory  } from '../../features/categorySlice/categorySlice';
+import { setFind } from '../../features/filterSlice/filterSlice';
+ import CardItem from './components/CardItem';
 import SearchCom from './components/SearchCom';
-import CategoryCom from './components/CategoryCom';
-
-
-
-
-
-
+import CategoryCom from './components/CategoryCom'; 
 
 const Header = () => {
-    const { productList, loading, error } = useSelector((state) => state.product);
- 
+    const { productList, loading, error } = useSelector((state) => state.product); 
     const { filteredList, find, loadingFilter, errorFilter } = useSelector((state) => state.filter);
-
-
+ 
     const dispatch = useDispatch();
     let displayArray = (filteredList.length ? filteredList : productList) 
     
