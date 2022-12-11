@@ -32,6 +32,7 @@ const productSlice = createSlice({
         setProduct: (state, { payload }) => {
             state.productList = payload;
         },
+
     },
     extraReducers: (builder) => {
         builder
