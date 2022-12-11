@@ -1,3 +1,16 @@
+<<<<<<< HEAD
+import React from 'react'
+import { useSelector } from "react-redux";
+
+const Navbar = () => {
+    const { user } = useSelector((state) => state.auth);
+   
+    return (
+        <div>Navbar
+            <link rel="stylesheet" href="" />
+        </div>
+    )
+=======
 import * as React from 'react';
  import IconButton from '@mui/material/IconButton';
 import {Box, AppBar, Badge, Typography, MenuItem, Menu, Toolbar} from '@mui/material';
@@ -198,5 +211,6 @@ import { useNavigate } from 'react-router-dom';
       {renderMenu}
     </Box>
   );
+>>>>>>> 47ae9b059f70c6e5e8489e5608be2f48b60a20e7
 }
 export default Navbar

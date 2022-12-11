@@ -5,14 +5,31 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+<<<<<<< HEAD
+    "@mui/icons-material": "^5.10.16",
+    "@mui/material": "^5.10.16",
+=======
     "@fontsource/roboto": "^4.5.8",
     "@mui/icons-material": "^5.10.16",
     "@mui/material": "^5.10.17",
     "@mui/styled-engine-sc": "^5.10.16",
+>>>>>>> 47ae9b059f70c6e5e8489e5608be2f48b60a20e7
     "@reduxjs/toolkit": "^1.9.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
+<<<<<<< HEAD
+    "axios": "^1.2.1",
+    "firebase": "^9.14.0",
+    "formik": "^2.2.9",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.4.4",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4",
+    "yup": "^0.32.11"
+=======
     "material-icons": "^1.13.1",
     "axios": "^1.2.1",
     "react": "^18.2.0",
@@ -22,6 +39,7 @@
     "react-scripts": "5.0.1",
     "styled-components": "^5.3.6",
     "web-vitals": "^2.1.4"
+>>>>>>> 47ae9b059f70c6e5e8489e5608be2f48b60a20e7
   },
   "scripts": {
     "start": "react-scripts start",

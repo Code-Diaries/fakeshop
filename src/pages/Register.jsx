@@ -1,25 +1,18 @@
-import React, { useState, useEffect } from "react";
-//import blokPng from "../assets/blok.png";
+import React, { useState} from "react";
 import { useNavigate } from "react-router-dom";
 //import { toastSuccessNotify, toastErrorNotify } from "../helpers/ToastNotify";
 import { useFormik } from "formik";
 import * as yup from "yup";
-//import { useAuth } from "../contexts/AuthContext";
 import loadingGif from "../assets/loading.gif";
 import googlePng from "../assets/google.png";
-import {
-  Avatar,
-  Button,
-  CssBaseline,
-  Grid,
-  Paper,
-  TextField,
-  Typography,
-  Box,
-} from "@mui/material";
+import {Avatar,Button,CssBaseline,Grid,Paper,TextField,Typography,Box,} from "@mui/material";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { createUser, logIn, signUpWithGoogle } from "../auth/firebase";
+import { createUser, signUpWithGoogle } from "../auth/firebase";
 import { grey } from "@mui/material/colors";
+
+
+
+
 
 const validationSchema = yup.object({
   email: yup
@@ -33,27 +26,31 @@ const validationSchema = yup.object({
 const styles = {
   root: {
     "& .MuiPaper-root": {
-      borderRadius: "10px",
-      boxShadow: "10px 10px 5px 0px rgba(0,0,0,0.75);",
+      borderRadius: "30px",
+    //   boxShadow: "10px 10px 5px 0px rgba(0,0,0,0.75);",
       height: "fit-content",
       marginTop: 10,
       maxWidth: "500px",
+      border: "solid 5px orange",
     },
   },
-//   image: {
+  image: {
 //     backgroundImage: "url(https://picsum.photos/1600/900)",
 //     backgroundRepeat: "no-repeat",
-//     backgroundColor: grey[50],
+    backgroundColor: grey[400],
 //     backgroundSize: "cover",
 //     backgroundPosition: "center",
 //     width: "100%",
 //     paddingTop: "40px",
-//   },
+   },
   paper: {
     padding: 8,
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    backgroundColor: grey[200],
+    borderRadius: "30px",
+   
   },
   avatar: {
     width: 200,
@@ -107,24 +104,31 @@ const styles = {
   },
 };
 
-function Login() {
+function Register() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
 
+ 
+
   const formik = useFormik({
     initialValues: {
+      name : "",
       email: "",
       password: "",
     },
     validationSchema: validationSchema,
     onSubmit: async (e, values) => {
       e.preventDefault();
+        console.log(values)
+        
       setLoading(true);
       try {
         const email = values.email
         const password = values.password
-        logIn(email, password, navigate);
+        const displayName = values.displayName
+
+        createUser(email, password, navigate, displayName);
         //navigate("/");
        // toastSuccessNotify("Logged in successfully!");
       } catch (error) {
@@ -138,9 +142,7 @@ function Login() {
   const handleGoogleProvider = (e) => {
     e.preventDefault();
     signUpWithGoogle(navigate);
-
   };
-  
 
 //   useEffect(() => {
 //     if (currentUser) {
@@ -153,18 +155,34 @@ function Login() {
     <Grid container component="main" sx={styles.root}> 
      {/* //ana konteynr  */}
       <CssBaseline />
-      <Grid container justifyContent="center" sx={styles.image}>  
+      <Grid container justifyContent="center" sx={styles.image}> 
       {/* // büyük bgfoto nun olduğu yer  */}
-        <Grid item xs={12} sm={8} md={5} m={5} component={Paper} elevation={6} square> 
+        <Grid item xs={12} sm={8} md={5} m={5} component={Paper}  square> 
         {/* //* paper şeklind companent kabartmayı sağlıyor carddan farkı elevetion kabartma miktarını  squer şeklini  */}
           <Box sx={styles.paper}>
             <Avatar sx={styles.avatar}>
-              <img src={AccountCircleIcon} alt="candela" />
+              <img src={AccountCircleIcon} alt="user" />
             </Avatar>
             <Typography sx={styles.header} component="h1" variant="h5">
-              ── Login ──
+              ── Register ──
             </Typography>
             <form sx={styles.form} onSubmit={formik.handleSubmit}>
+            <TextField
+              sx={{color : "grey"}}
+                variant="outlined"
+                margin="normal"
+                fullWidth
+                id="displayName"
+                label="displayName"
+                name="displayName"
+                autoComplete="displayName"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                autoFocus
+                value={formik.values.displayName}
+                error={formik.touched.displayName && Boolean(formik.errors.displayName)}
+                helperText={formik.touched.displayName && formik.errors.displayName}
+              />
               <TextField
               sx={{color : "grey"}}
                 variant="outlined"
@@ -211,9 +229,9 @@ function Login() {
                     variant="contained"
                     sx={styles.submit}
                   >
-                    LogIn
+                    SıgnIn
                   </Button>
- 
+                  
                   <Button
                     fullWidth
                     variant="contained"
@@ -232,9 +250,9 @@ function Login() {
             </form>
           </Box>
         </Grid>
-      </Grid>
+      </Grid> 
     </Grid>
   );
 }
 
-export default Login;
+export default Register;
