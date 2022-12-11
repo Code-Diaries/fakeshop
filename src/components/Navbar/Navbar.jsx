@@ -1,29 +1,16 @@
-<<<<<<< HEAD
-import React from 'react'
-import { useSelector } from "react-redux";
-
-const Navbar = () => {
-    const { user } = useSelector((state) => state.auth);
-   
-    return (
-        <div>Navbar
-            <link rel="stylesheet" href="" />
-        </div>
-    )
-=======
 import * as React from 'react';
- import IconButton from '@mui/material/IconButton';
-import {Box, AppBar, Badge, Typography, MenuItem, Menu, Toolbar} from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu'; 
+import IconButton from '@mui/material/IconButton';
+import { Box, AppBar, Badge, Typography, MenuItem, Menu, Toolbar } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import LightModeIcon from '@mui/icons-material/LightMode';
-import { useNavigate } from 'react-router-dom';  
+import { useNavigate } from 'react-router-dom';
 
 
- const Navbar = () => { 
+const Navbar = () => {
 
   // const navigate = useNavigate();
 
@@ -155,7 +142,7 @@ import { useNavigate } from 'react-router-dom';
             FAKESHOP
           </Typography>
 
-       
+
 
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
@@ -211,6 +198,5 @@ import { useNavigate } from 'react-router-dom';
       {renderMenu}
     </Box>
   );
->>>>>>> 47ae9b059f70c6e5e8489e5608be2f48b60a20e7
 }
 export default Navbar
