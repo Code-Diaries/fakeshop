@@ -1,12 +1,9 @@
 import React, { useEffect } from 'react';
-import Register from "./pages/Register"
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
-
-import Login from './pages/Login';
 import { useDispatch, useSelector } from 'react-redux';
 import { userObserver } from './auth/firebase';
-
+import Home from "./pages/Home"
 
 
 
@@ -23,10 +20,7 @@ function App() {
   return (
     <div className="App">
       <Navbar/>
-    
-       <Login/>
-      {/* <Register/> */}
-     
+      <Home/>
     </div>
   );
 }
