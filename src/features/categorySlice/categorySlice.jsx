@@ -10,13 +10,12 @@ const initialState = {
 console.log("here")
 export const getCategory = createAsyncThunk(
     "getCategory", //! action types
-    async (thunkAPI, { rejectWithValue }) => {
+    async ({ rejectWithValue }) => {
         //! asyn callback function
-        const url = `https://fakestoreapi.com/products/categories`;
-
+        const url = `https://fakestoreapi.com/products/categories`; 
         try {
             const { data } = await axios(url);
-            console.log(data)
+             
             return data;
         } catch (error) {
             console.log(error);
