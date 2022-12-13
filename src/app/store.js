@@ -14,12 +14,9 @@ const store = configureStore({
     category: categoryReducer,
     filter: filterReducer,
     search: searchReducer,
-<<<<<<< HEAD
     fav: favSliceReducer,
-=======
     auth: authReducer,
-    favorite: favoriteSliceReducer
->>>>>>> development
+
 
   },
 });

@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import { useDispatch, useSelector } from 'react-redux';
 import { userObserver } from './auth/firebase';
@@ -11,7 +10,7 @@ function App() {
 
   let currentUser = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     userObserver(dispatch);
     console.log("değişti kullanıcı")
@@ -19,8 +18,8 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar/>
-      <Home/>
+      <Navbar />
+      <Home />
     </div>
   );
 }

@@ -6,7 +6,6 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
-<<<<<<< HEAD
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -76,21 +75,6 @@ const Header = () => {
     const { filteredList, find, loadingFilter, errorFilter } = useSelector((state) => state.filter);
     const { search } = useSelector((state) => state.search);
 
-=======
-import Typography from '@mui/material/Typography'; 
-import { useDispatch, useSelector } from 'react-redux';
-import { getProduct } from '../../features/productSlice/productSlice';
-import { getCategory  } from '../../features/categorySlice/categorySlice';
-import { setFind } from '../../features/filterSlice/filterSlice';
- import CardItem from './components/CardItem';
-import SearchCom from './components/SearchCom';
-import CategoryCom from './components/CategoryCom'; 
-
-const Header = () => {
-    const { productList, loading, error } = useSelector((state) => state.product); 
-    const { filteredList, find, loadingFilter, errorFilter } = useSelector((state) => state.filter);
- 
->>>>>>> development
     const dispatch = useDispatch();
     let displayArray = (filteredList.length ? filteredList : productList)
 
@@ -246,7 +230,7 @@ const Header = () => {
                             ))}
                     </Box>
                 )}</>
-        </> 
+        </>
     )
 }
 
