@@ -1,12 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React, { useEffect } from 'react';
+
+import Navbar from './components/Navbar/Navbar';
+import { useDispatch, useSelector } from 'react-redux';
+import { userObserver } from './auth/firebase';
+import Home from "./pages/Home"
+
+
 
 function App() {
+
+  let currentUser = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    userObserver(dispatch);
+    console.log("değişti kullanıcı")
+  }, [currentUser]);
+
   return (
     <div className="App">
-      hello
+      <Navbar/>
+      <Home/>
     </div>
   );
 }

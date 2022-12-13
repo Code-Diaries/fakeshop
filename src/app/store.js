@@ -4,14 +4,20 @@ import productReducer from "../features/productSlice/productSlice"
 import filterReducer from "../features/filterSlice/filterSlice"
 import searchReducer from "../features/searchSlice/searchSlice";
 import darkmodeReducer from "../features/darkmodeSice/darkmodeSlice";
+import authReducer from "../features/authSlice";
+import favoriteSliceReducer from "../features/favoriteSlice/favoriteSlice";
 
-export const store = configureStore({
+
+const store = configureStore({
   reducer: {
     product: productReducer,
     category: categoryReducer,
     filter: filterReducer,
     search: searchReducer,
-    darkmode:darkmodeReducer
+    darkmode:darkmodeReducer,
+    auth: authReducer,
+    favorite: favoriteSliceReducer
 
   },
 });
+export default store;
