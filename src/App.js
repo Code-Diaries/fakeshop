@@ -1,12 +1,20 @@
 import React, { useEffect } from 'react';
 
-import Navbar from './components/Navbar/Navbar';
 import { useDispatch, useSelector } from 'react-redux';
 import { userObserver } from './auth/firebase';
-import Home from "./pages/Home"
 
 
 
+
+import Login from "./pages/Login"
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Navbar from './components/Navbar/Navbar'
+import Home from './pages/Home'
+import ProductDetail from './pages/ProductDetail'
+import ShippingAdress from './pages/ShippingAdress'
+import PrivateRouter from './router/PrivateRouter'
+import Footer from './components/Footer/Footer';
 function App() {
 
   let currentUser = useSelector((state) => state.user);
@@ -20,9 +28,13 @@ function App() {
   return (
     <div className="App">
       <Navbar/>
-      <Home/>
+      <Home />
+    <Footer/>
     </div>
   );
 }
 
 export default App;
+
+
+
