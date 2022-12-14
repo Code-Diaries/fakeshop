@@ -60,13 +60,13 @@ const Navbar = () => {
       onClose={handleMobileMenuClose}
 
     >
-      <MenuItem>
-        <IconButton size="large" color="inherit">
+      <MenuItem >
+        <IconButton size="large" color="inherit" >
           <Badge color="error">
-            <FavoriteBorderIcon />
+            <FavoriteBorderIcon onClick={ ()=>navigate("/favoriteproduct")} />
           </Badge>
         </IconButton>
-        <p>Favourites</p>
+        <p onClick={ ()=>navigate("/favoriteproduct")}>Favourites</p>
       </MenuItem>
       <MenuItem>
         <IconButton
@@ -90,9 +90,9 @@ const Navbar = () => {
          onClick={() => navigate("/login")} 
        
         >
-          <AccountCircle />
+          <AccountCircle onClick={() => navigate("/login")} />
         </IconButton>
-        <p >LogIn/LogOut</p>
+        <p onClick={() => navigate("/login")}>LogIn</p>
 
       </MenuItem>
     </Menu>
@@ -117,6 +117,7 @@ const Navbar = () => {
             noWrap
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
+            onClick={() =>navigate("/")}
           >
             FAKESHOP
           </Typography>
@@ -148,7 +149,7 @@ const Navbar = () => {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <AccountCircle />
+              <AccountCircle onClick={() => navigate("/login")}/>
 
             </IconButton>
             <IconButton size="large"
