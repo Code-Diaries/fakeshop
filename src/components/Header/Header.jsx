@@ -21,7 +21,7 @@ import { getCategory, setChoosen } from '../../features/categorySlice/categorySl
 import { getFilter, setFind } from '../../features/filterSlice/filterSlice';
 import { setSearch } from '../../features/searchSlice/searchSlice';
 
-import FavoriteIcon from './FavoriteIcon';
+import FavoriteIcon from './components/FavoriteIcon';
 
 
 const Search = styled('div')(({ theme }) => ({

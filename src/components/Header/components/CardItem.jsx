@@ -15,10 +15,11 @@ const CardItem = ({ item, index }) => {
     const { favoriteList } = useSelector(state => state.favorite)
 
     const favoriteHandler = (item) => {
+        console.log("favorite")
         if (favoriteList.includes(item)) {
-          return  dispatch(removeFromFavouriteList(item))
+            return dispatch(removeFromFavouriteList(item))
         }
-       return dispatch(addToFavoriteList(item))
+        return dispatch(addToFavoriteList(item))
     }
     return (
         <Card sx={{ maxWidth: 345, maxHeight: 550, minHeight: 550, margin: 2, position: "relative" }} key={index}>

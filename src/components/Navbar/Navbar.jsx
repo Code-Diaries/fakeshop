@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -148,7 +148,8 @@ const Navbar = () => {
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
               <Badge color="error">
-                <FavoriteBorderIcon />
+                <FavoriteBorderIcon
+                  onClick={() => navigate("/favoriteproduct")} />
               </Badge>
             </IconButton>
             <IconButton
