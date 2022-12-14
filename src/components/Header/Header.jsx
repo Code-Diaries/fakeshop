@@ -1,10 +1,5 @@
 import * as React from 'react';
 import { useEffect } from "react";
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -14,14 +9,12 @@ import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import Typography from '@mui/material/Typography';
 import SearchIcon from '@mui/icons-material/Search';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { getProduct } from '../../features/productSlice/productSlice';
 import { getCategory, setChoosen } from '../../features/categorySlice/categorySlice';
 import { getFilter, setFind } from '../../features/filterSlice/filterSlice';
 import { setSearch } from '../../features/searchSlice/searchSlice';
-
-import FavoriteIcon from './components/FavoriteIcon';
+import CardItem from './components/CardItem';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -112,8 +105,7 @@ const Header = () => {
 
     console.log(productList);
 
-    // console.log(search);
-    // console.log(find)
+
 
 
 
@@ -199,34 +191,7 @@ const Header = () => {
                     >
                         {(find?.length ? find : displayArray)
                             ?.map((item, index) => (
-                                <Card sx={{ maxWidth: 345, maxHeight: 550, minHeight: 550, margin: 2, position: "relative" }} key={index}>
-                                    <div style={{ position: "absolute", right: 0 }} >
-                                        <FavoriteIcon item={item} />
-                                    </div>
-
-                                    <CardMedia
-                                        component="img"
-                                        alt={item?.title}
-                                        height="250"
-                                        image={item?.image}
-                                        style={{ objectFit: "contain", width: 350, height: 250, }}
-                                    />
-                                    <CardContent>
-                                        <Typography gutterBottom variant="h6" component="div" minHeight={100}>
-                                            {item?.title}
-                                        </Typography>
-
-                                        <Typography variant="h6" color="primary" height="35">
-                                            Rate: {item?.rating?.rate}
-                                        </Typography>
-                                        <Typography variant="h3" color="orange" height="60">
-                                            {item?.price} TL
-                                        </Typography>
-                                    </CardContent>
-                                    <CardActions height="35">
-                                        <Button size="small">Sepete Ekle</Button>
-                                    </CardActions>
-                                </Card>
+                                <CardItem item={item} index={index} />
                             ))}
                     </Box>
                 )}</>

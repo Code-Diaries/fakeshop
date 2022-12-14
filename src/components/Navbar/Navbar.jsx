@@ -8,9 +8,11 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 const Navbar = () => {
+  const { favoriteList } = useSelector(state => state.favorite)
 
   const navigate = useNavigate();
 
@@ -149,7 +151,13 @@ const Navbar = () => {
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
               <Badge color="error">
                 <FavoriteBorderIcon
-                  onClick={() => navigate("/favoriteproduct")} />
+                  onClick={() => {
+                    if (favoriteList.length) {
+                      navigate("/favoriteproduct")
+                    } else {
+                      alert("there is no favorite product to show")
+                    }
+                  }} />
               </Badge>
             </IconButton>
             <IconButton
