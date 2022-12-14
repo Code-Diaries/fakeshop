@@ -15,6 +15,7 @@ import ProductDetail from './pages/ProductDetail'
 import ShippingAdress from './pages/ShippingAdress'
 import PrivateRouter from './router/PrivateRouter'
 import Footer from './components/Footer/Footer';
+import AppRouter from './router/AppRouter';
 function App() {
 
   let currentUser = useSelector((state) => state.user);
@@ -27,9 +28,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar/>
-      <Home />
-    <Footer/>
+   <AppRouter/>
     </div>
   );
 }

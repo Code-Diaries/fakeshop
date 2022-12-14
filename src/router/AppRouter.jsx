@@ -3,7 +3,7 @@ import Login from "../pages/Login"
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from '../components/Navbar/Navbar'
-import HomePage from '../pages/HomePage'
+import Home from '../pages/HomePage'
 import ProductDetail from '../pages/ProductDetail'
 import ShippingAdress from '../pages/ShippingAdress'
 import PrivateRouter from './PrivateRouter'
@@ -17,7 +17,7 @@ const AppRouter = () => {
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/login' element={<Login />} />
+        <Route path='/login' element={<Login/>} />
         <Route path='/productDetail' element={<PrivateRouter />}>
          <Route path="" element={<ProductDetail />} />
 

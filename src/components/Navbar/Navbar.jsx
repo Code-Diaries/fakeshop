@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -37,28 +37,7 @@ const Navbar = () => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
-  const menuId = 'primary-search-account-menu';
-  const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
-      }}
-      id={menuId}
-      keepMounted
-      transformOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
-      }}
-      open={isMenuOpen}
-      onClose={handleMenuClose}
-    >
-      <MenuItem onClick={handleMenuClose}>Login</MenuItem>
-      {/* user olduğunda Logout user yoksa Login yazacak */}
-
-    </Menu>
-  );
+ 
 
 
 
@@ -108,8 +87,8 @@ const Navbar = () => {
           aria-controls="primary-search-account-menu"
           aria-haspopup="true"
           color="inherit"
-        // onClick={() => navigate("/login")} 
-        // redirect gelecek
+         onClick={() => navigate("/login")} 
+       
         >
           <AccountCircle />
         </IconButton>
@@ -148,7 +127,7 @@ const Navbar = () => {
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
               <Badge color="error">
-                <FavoriteBorderIcon />
+                <FavoriteBorderIcon onClick={()=>navigate("/favoriteproduct")} />
               </Badge>
             </IconButton>
             <IconButton
@@ -164,7 +143,7 @@ const Navbar = () => {
               size="large"
               edge="end"
               aria-label="account of current user"
-              aria-controls={menuId}
+             
               aria-haspopup="true"
               onClick={handleProfileMenuOpen}
               color="inherit"
@@ -195,7 +174,7 @@ const Navbar = () => {
         </Toolbar>
       </AppBar>
       {renderMobileMenu}
-      {renderMenu}
+   
     </Box>
   );
 }
