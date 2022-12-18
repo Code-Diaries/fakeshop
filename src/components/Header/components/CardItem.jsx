@@ -24,10 +24,10 @@ const CardItem = ({ item, index }) => {
         dispatch(addToFavoriteList(item))
 
     }
-    console.log(favoriteList)
+
     return (
         <Card sx={{ maxWidth: 345, maxHeight: 550, minHeight: 550, margin: 2, position: "relative" }} key={index}>
-            <div style={{ position: "absolute", right: 0 }} onClick={favoriteHandler(item)}>
+            <div style={{ position: "absolute", right: 0 }} onClick={() => favoriteHandler(item)}>
                 <FavoriteIcon item={item} />
             </div>
 
