@@ -11,20 +11,21 @@ const FavoriteIcon = ({ item }) => {
     // console.log(item)
     // console.log(items.includes(item))
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        // const items = JSON.parse(localStorage.getItem('items'))
-        // console.log(items.length > 0)
-        // if (items.length > 0) {
-        //     dispatch(addToFavoriteList([...items]))
-        // }
+    //     const items = JSON.parse(localStorage.getItem('items'))
 
-    }, [])
+    //     if ((items?.length > 0) && (favoriteList == [])) {
+    //         return dispatch(addToFavoriteList([...items]))
+    //     }
 
+    // }, [])
+
+    console.log(favoriteList)
 
     return (
         <div>
-            {favoriteList.includes(item) ? <FavoriteRoundedIcon /> : <FavoriteBorderRoundedIcon />}
+            {favoriteList?.includes(item) ? <FavoriteRoundedIcon /> : <FavoriteBorderRoundedIcon />}
         </div>
     )
 }
