@@ -4,7 +4,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useDispatch, useSelector } from 'react-redux';
-import { setChoosen } from '../../../features/categorySlice/categorySlice';
+import { getCategory, setChoosen } from '../../../features/categorySlice/categorySlice';
 import { getFilter } from '../../../features/filterSlice/filterSlice';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
