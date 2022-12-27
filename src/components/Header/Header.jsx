@@ -21,10 +21,8 @@ const Header = () => {
 
     useEffect(() => {
         dispatch(getProduct())
-        dispatch(getCategory())f
-        console.log(categoryList)
+        dispatch(getCategory())
     }, [])
-    console.log(categoryList)
     return (
         <>
             <CategoryCom />
