@@ -5,6 +5,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import FavoriteIcon from './FavoriteIcon';
@@ -29,8 +31,8 @@ const CardItem = ({ item, index }) => {
     }
 
     return (
-        <Card sx={{ maxWidth: 250, minWidth: 250, maxHeight: 350, minHeight: 350, margin: 2, position: "relative", background: "#fff3e0" }} key={index}>
-            <div style={{ position: "absolute", right: 0 }} onClick={() => favoriteHandler(item)}>
+        <Card sx={{ maxWidth: 250, minWidth: 250, maxHeight: 350, minHeight: 350, margin: 2, padding: 2, background: "##F5F5F5" }} key={index}>
+            <div style={{ textAlign: "end" }} onClick={() => favoriteHandler(item)}>
                 <FavoriteIcon item={item} />
             </div>
 
@@ -42,19 +44,25 @@ const CardItem = ({ item, index }) => {
                 style={{ objectFit: "contain", width: 250, height: 180, background: "white" }}
             />
             <CardContent>
-                <Typography gutterBottom variant="h6" component="div" height={40} style={{ fontSize: ".7rem" }}>
-                    {item?.title}
-                </Typography>
+                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                    <Typography gutterBottom variant="h6" component="div" height={40} style={{ fontSize: ".7rem" }}>
+                        {item?.title}
+                    </Typography>
 
-                <Typography variant="h6" color="primary"   >
-                    <Rating name="read-only" value={item?.rating?.rate} readOnly style={{ fontSize: "1rem" }} />
-                </Typography>
+                    <Typography variant="h6" color="primary"   >
+                        <Rating name="read-only" value={item?.rating?.rate} readOnly style={{ fontSize: "1rem", marginTop: "0" }} />
+                    </Typography>
+                </div>
+
+            </CardContent>
+            <CardActions style={{ marginTop: "0", display: "flex", justifyContent: "space-between" }}>
                 <Typography variant="h5" color="orange" style={{ fontSize: "1rem", fontWeight: "600" }}>
                     {item?.price} TL
                 </Typography>
-            </CardContent>
-            <CardActions style={{ marginTop: "0" }}>
-                <Button size="small" style={{ color: "white", background: "orange" }}>Sepete Ekle</Button>
+                <div style={{ background: "#EDCF65", padding: "1rem", width: "4rem", display: "flex", justifyContent: "space-evenly" }}>
+                    <RemoveRedEyeIcon />
+                    <ShoppingBasketIcon />
+                </div>
             </CardActions>
         </Card>
     )

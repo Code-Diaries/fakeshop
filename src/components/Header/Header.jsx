@@ -183,11 +183,12 @@ const Header = () => {
                 )}
                 {!(loadingFilter.length ? loadingFilter : loading) && (
                     <Box
-                        xs={{ d: "flex" }}
+                        xs={12}
                         display="flex"
                         alignItems="center"
                         justifyContent="space-evenly"
                         flexWrap="wrap"
+
                     >
                         {(find?.length ? find : displayArray)
                             ?.map((item, index) => (
