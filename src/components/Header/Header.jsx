@@ -22,7 +22,11 @@ const Header = () => {
     useEffect(() => {
         dispatch(getProduct())
         dispatch(getCategory())
+
     }, [])
+
+
+
     return (
         <>
             <CategoryCom />

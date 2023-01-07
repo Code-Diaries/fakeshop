@@ -7,11 +7,13 @@ const initialState = {
     loadingCategory: false,
     errorCategory: false,
 };
-console.log("here")
+
 export const getCategory = createAsyncThunk(
     "getCategory", //! action types
+
     async ({ rejectWithValue }) => {
         //! asyn callback function
+        console.log("here")
         const url = `https://fakestoreapi.com/products/categories`;
         try {
             const { data } = await axios(url);

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -14,11 +14,19 @@ const CategoryCom = () => {
     const dispatch = useDispatch();
 
     const { categoryList, loadingCategory, errorCategory } = useSelector((state) => state.category);
+
+    console.log(categoryList)
     const handleChange = (e) => {
         e.preventDefault()
         dispatch(setChoosen(e.target.value))
         dispatch(getFilter())
+
     }
+    useEffect(() => {
+
+        dispatch(getCategory())
+        console.log(categoryList)
+    }, [])
     return (<>
         {errorCategory && (
             <Typography variant="h3" color="error" align="center" mt={20}>
