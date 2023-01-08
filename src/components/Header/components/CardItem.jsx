@@ -45,7 +45,7 @@ const CardItem = ({ item, index }) => {
             />
             <CardContent>
                 <div style={{ display: "flex", justifyContent: "space-between" }}>
-                    <Typography gutterBottom variant="h6" component="div" height={40} style={{ fontSize: ".7rem" }}>
+                    <Typography gutterBottom variant="h6" component="div" height={40} style={{ fontSize: ".6rem", marginTop: ".5rem" }}>
                         {item?.title}
                     </Typography>
 
