@@ -46,7 +46,7 @@ const CategoryCom = () => {
                 justifyContent="space-evenly"
                 flexWrap="wrap"
             >
-                <FormControl style={{ width: 500 }}>
+                <FormControl style={{ width: "12rem" }}>
                     <InputLabel id="demo-simple-select-label">Select Category</InputLabel>
                     <Select
                         labelId="demo-simple-select-label"

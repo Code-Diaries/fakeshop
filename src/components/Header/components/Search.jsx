@@ -4,7 +4,7 @@ import { InputBase, styled, alpha } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 
 
-const Search = ({ productList, filteredList, setFind ,search, setSearch}) => {
+const Search = ({ productList, filteredList, setFind, search, setSearch }) => {
   const dispatch = useDispatch();
   let displayArray = (filteredList.length ? filteredList : productList)
 
@@ -17,6 +17,8 @@ const Search = ({ productList, filteredList, setFind ,search, setSearch}) => {
       )
     })
     dispatch(setFind(displayArray))
+
+
   }
 
   const Search = styled('div')(({ theme }) => ({

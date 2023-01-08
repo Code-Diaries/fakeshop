@@ -3,18 +3,19 @@ import { useEffect } from "react";
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProduct } from '../../features/productSlice/productSlice';
+import { getProduct, setFinalList, setProduct } from '../../features/productSlice/productSlice';
 import { getCategory } from '../../features/categorySlice/categorySlice';
 import { setFind } from '../../features/filterSlice/filterSlice';
 import CardItem from './components/CardItem';
 import SearchCom from './components/SearchCom';
 import CategoryCom from './components/CategoryCom';
+import PriceSorting from './components/PriceSorting';
 
 
 const Header = () => {
-    const { productList, loading, error } = useSelector((state) => state.product);
+    const { productList, loading, error, finalList } = useSelector((state) => state.product);
     const { filteredList, find, loadingFilter, errorFilter } = useSelector((state) => state.filter);
-    const { categoryList } = useSelector((state) => state.category);
+
 
     const dispatch = useDispatch();
     let displayArray = (filteredList.length ? filteredList : productList)
@@ -24,14 +25,20 @@ const Header = () => {
         dispatch(getCategory())
 
     }, [])
-
-
+    dispatch(setFinalList(find?.length ? find : displayArray))
 
     return (
         <>
-            <CategoryCom />
+
             <div style={{ display: "flex", justifyContent: "space-between", marginTop: "2rem" }}>
-                <SearchCom productList={productList} filteredList={filteredList} setFind={setFind} />
+                <div>
+                    <SearchCom productList={productList} filteredList={filteredList} setFind={setFind} />
+                </div>
+                <div style={{ display: "flex", justifyContent: "end", width: "25rem" }}>
+                    <CategoryCom />
+                    <PriceSorting />
+                </div>
+
 
             </div>
             <>
@@ -53,7 +60,7 @@ const Header = () => {
                         justifyContent="space-evenly"
                         flexWrap="wrap"
                     >
-                        {(find?.length ? find : displayArray)
+                        {finalList
                             ?.map((item, index) => (
                                 <CardItem item={item} index={index} />
                             ))}

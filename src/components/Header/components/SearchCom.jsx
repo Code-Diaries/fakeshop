@@ -1,8 +1,8 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { setSearch } from '../../../features/searchSlice/searchSlice'; 
-import { styled, alpha, InputBase , Box} from '@mui/material';
- import SearchIcon from '@mui/icons-material/Search';
+import { setSearch } from '../../../features/searchSlice/searchSlice';
+import { styled, alpha, InputBase, Box } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -47,35 +47,36 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-const SearchCom = ({productList,setFind, filteredList}) => {
-    const dispatch = useDispatch(); 
+const SearchCom = ({ productList, setFind, filteredList }) => {
+    const dispatch = useDispatch();
     const { search } = useSelector((state) => state.search);
-    let displayArray = (filteredList.length ? filteredList : productList) 
-    
+    let displayArray = (filteredList.length ? filteredList : productList)
+
     const handleSubmit = (e) => {
-        e.preventDefault() 
-        displayArray = displayArray.filter((item) => { 
-            return ( 
-            item.title.toLowerCase().includes(search.toLowerCase()) === true
+        e.preventDefault()
+        displayArray = displayArray.filter((item) => {
+            return (
+                item.title.toLowerCase().includes(search.toLowerCase()) === true
             )
-        }) 
-        dispatch(setFind(displayArray)) 
-    } 
-  return (
-    <Box sx={{ flexGrow: 1 }} onSubmit={handleSubmit} component="form" style={{ width: 500 }}> 
-    <Search >
-        <SearchIconWrapper>
-            <SearchIcon />
-        </SearchIconWrapper>
-        <StyledInputBase
-            placeholder="Search.."
-            inputProps={{ 'aria-label': 'search' }}
-            onChange={(e) => dispatch(setSearch(e.target.value))}
-            value={search}
-        />
-    </Search> 
-</Box>
-  )
+        })
+        dispatch(setFind(displayArray))
+        dispatch(setSearch(""))
+    }
+    return (
+        <Box sx={{ flexGrow: 1 }} onSubmit={handleSubmit} component="form" style={{ width: 200 }}>
+            <Search >
+                <SearchIconWrapper>
+                    <SearchIcon />
+                </SearchIconWrapper>
+                <StyledInputBase
+                    placeholder="Search.."
+                    inputProps={{ 'aria-label': 'search' }}
+                    onChange={(e) => dispatch(setSearch(e.target.value))}
+                    value={search}
+                />
+            </Search>
+        </Box>
+    )
 }
 
 export default SearchCom
