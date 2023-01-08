@@ -13,7 +13,7 @@ import PriceSorting from './components/PriceSorting';
 
 
 const Header = () => {
-    const { productList, loading, error, finalList } = useSelector((state) => state.product);
+    const { productList, loading, error, finalList, sortingList } = useSelector((state) => state.product);
     const { filteredList, find, loadingFilter, errorFilter } = useSelector((state) => state.filter);
 
 
@@ -25,8 +25,9 @@ const Header = () => {
         dispatch(getCategory())
 
     }, [])
-    dispatch(setFinalList(find?.length ? find : displayArray))
 
+    dispatch(setFinalList(find?.length ? find : displayArray))
+    console.log(sortingList)
     return (
         <>
 
@@ -60,7 +61,7 @@ const Header = () => {
                         justifyContent="space-evenly"
                         flexWrap="wrap"
                     >
-                        {finalList
+                        {(sortingList?.length ? sortingList : finalList)
                             ?.map((item, index) => (
                                 <CardItem item={item} index={index} />
                             ))}

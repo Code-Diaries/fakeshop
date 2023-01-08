@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -8,24 +8,29 @@ import { getCategory, setChoosen } from '../../../features/categorySlice/categor
 import { getFilter } from '../../../features/filterSlice/filterSlice';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import { setSortingList } from '../../../features/productSlice/productSlice';
 
 
 const CategoryCom = () => {
+    const [select, setSelect] = useState("")
     const dispatch = useDispatch();
 
     const { categoryList, loadingCategory, errorCategory } = useSelector((state) => state.category);
 
     console.log(categoryList)
     const handleChange = (e) => {
+        dispatch(setSortingList([]))
         e.preventDefault()
         dispatch(setChoosen(e.target.value))
         dispatch(getFilter())
+        setSelect("Select Category")
+
 
     }
     useEffect(() => {
 
         dispatch(getCategory())
-        console.log(categoryList)
+
     }, [])
     return (<>
         {errorCategory && (
@@ -53,6 +58,7 @@ const CategoryCom = () => {
                         id="demo-simple-select"
                         label="Select Category"
                         onChange={handleChange}
+                        value={select}
                     >
                         {categoryList?.map((item, index) => (
                             <MenuItem value={item} key={index}>{item}</MenuItem>

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setSearch } from '../../../features/searchSlice/searchSlice';
 import { styled, alpha, InputBase, Box } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import { setSortingList } from '../../../features/productSlice/productSlice';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -53,6 +54,7 @@ const SearchCom = ({ productList, setFind, filteredList }) => {
     let displayArray = (filteredList.length ? filteredList : productList)
 
     const handleSubmit = (e) => {
+        dispatch(setSortingList([]))
         e.preventDefault()
         displayArray = displayArray.filter((item) => {
             return (
