@@ -3,6 +3,8 @@ import axios from "axios";
 
 const initialState = {
     productList: [],
+    finalList: [],
+    sortingList: [],
     loading: false,
     error: false,
 };
@@ -32,6 +34,13 @@ const productSlice = createSlice({
         setProduct: (state, { payload }) => {
             state.productList = payload;
         },
+        setFinalList: (state, { payload }) => {
+            state.finalList = payload;
+        },
+        setSortingList: (state, { payload }) => {
+            state.sortingList = payload;
+        },
+
 
     },
     extraReducers: (builder) => {
@@ -50,6 +59,6 @@ const productSlice = createSlice({
     },
 });
 
-export const { setProduct } = productSlice.actions;
+export const { setProduct, setFinalList, setSortingList } = productSlice.actions;
 
 export default productSlice.reducer;
