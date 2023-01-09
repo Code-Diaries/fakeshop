@@ -1,77 +1,9 @@
 import * as React from 'react';
 import { useEffect } from "react";
 import Box from '@mui/material/Box';
-<<<<<<< HEAD
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import { styled, alpha } from '@mui/material/styles';
-import InputBase from '@mui/material/InputBase';
-import Typography from '@mui/material/Typography';
-import SearchIcon from '@mui/icons-material/Search';
-import { useDispatch, useSelector } from 'react-redux';
-import { getProduct } from '../../features/productSlice/productSlice';
-import { getCategory, setChoosen } from '../../features/categorySlice/categorySlice';
-import { getFilter, setFind } from '../../features/filterSlice/filterSlice';
-import { setSearch } from '../../features/searchSlice/searchSlice';
-import CardItem from './components/CardItem';
-
-
-const Search = styled('div')(({ theme }) => ({
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
-    '&:hover': {
-        backgroundColor: alpha(theme.palette.common.white, 0.25),
-    },
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-        marginLeft: theme.spacing(1),
-        width: 'auto',
-    },
-}));
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    color: 'inherit',
-    '& .MuiInputBase-input': {
-        padding: theme.spacing(1, 1, 1, 0),
-        // vertical padding + font size from searchIcon
-        paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-        transition: theme.transitions.create('width'),
-        width: '100%',
-        [theme.breakpoints.up('sm')]: {
-            width: '12ch',
-            '&:focus': {
-                width: '20ch',
-            },
-        },
-    },
-}));
-
-
-
-
-const Header = () => {
-    const { productList, loading, error } = useSelector((state) => state.product);
-    const { categoryList, loadingCategory, errorCategory } = useSelector((state) => state.category);
-    const { filteredList, find, loadingFilter, errorFilter } = useSelector((state) => state.filter);
-    const { search } = useSelector((state) => state.search);
-=======
 import Typography from '@mui/material/Typography';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProduct, setFinalList, setProduct } from '../../features/productSlice/productSlice';
+import { getProduct, setFinalList } from '../../features/productSlice/productSlice';
 import { getCategory } from '../../features/categorySlice/categorySlice';
 import { setFind } from '../../features/filterSlice/filterSlice';
 import CardItem from './components/CardItem';
@@ -84,115 +16,18 @@ const Header = () => {
     const { productList, loading, error, finalList, sortingList } = useSelector((state) => state.product);
     const { filteredList, find, loadingFilter, errorFilter } = useSelector((state) => state.filter);
 
->>>>>>> feature-10-filtering-sortiering
 
     const dispatch = useDispatch();
     let displayArray = (filteredList.length ? filteredList : productList)
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> feature-10-filtering-sortiering
     useEffect(() => {
         dispatch(getProduct())
         dispatch(getCategory())
 
     }, [])
 
-<<<<<<< HEAD
-    const handleChange = (e) => {
-        e.preventDefault()
-        dispatch(setChoosen(e.target.value))
-        dispatch(getFilter())
-
-    }
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-
-        displayArray = displayArray.filter((item) => {
-            console.log(item.title);
-            return (
-
-                item.title.toLowerCase().includes(search.toLowerCase()) === true
-            )
-        })
-
-        dispatch(setFind(displayArray))
-
-    }
 
 
-
-    console.log(productList);
-
-
-
-
-
-    return (
-        <>
-            <div style={{ display: "flex", justifyContent: "space-between", marginTop: "2rem" }}>
-                <div>
-                    <Box sx={{ flexGrow: 1 }} onSubmit={handleSubmit} component="form" style={{ width: 500 }}>
-
-                        <Search >
-                            <SearchIconWrapper>
-                                <SearchIcon />
-                            </SearchIconWrapper>
-                            <StyledInputBase
-                                placeholder="Search.."
-                                inputProps={{ 'aria-label': 'search' }}
-                                onChange={(e) => dispatch(setSearch(e.target.value))}
-                                value={search}
-                            />
-                        </Search>
-
-
-                    </Box>
-                </div>
-                <div>
-                    {errorCategory && (
-                        <Typography variant="h3" color="error" align="center" mt={20}>
-                            {error}
-                        </Typography>
-                    )}
-                    {loadingCategory && (
-                        <Box display="flex" alignItems="center" justifyContent="center">
-                            loading
-                        </Box>
-                    )}
-                    {!loadingCategory && (
-                        <Box
-                            xs={{ d: "flex" }}
-                            display="flex"
-                            alignItems="center"
-                            justifyContent="space-evenly"
-                            flexWrap="wrap"
-                        >
-
-                            <FormControl style={{ width: 500 }}>
-                                <InputLabel id="demo-simple-select-label">Select Category</InputLabel>
-                                <Select
-                                    labelId="demo-simple-select-label"
-                                    id="demo-simple-select"
-                                    label="Select Category"
-                                    onChange={handleChange}
-                                >
-                                    {categoryList?.map((item, index) => (
-                                        <MenuItem value={item} key={index}>{item}</MenuItem>
-                                    ))}
-                                </Select>
-                            </FormControl>
-
-                        </Box>
-                    )}
-                </div>
-            </div>
-
-
-=======
     dispatch(setFinalList(find?.length ? find : displayArray))
     console.log(sortingList)
     return (
@@ -209,7 +44,6 @@ const Header = () => {
 
 
             </div>
->>>>>>> feature-10-filtering-sortiering
             <>
                 {(errorFilter.length ? errorFilter : error) && (
                     <Typography variant="h3" color="error" align="center" mt={20}>
