@@ -1,11 +1,11 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 //import { toastSuccessNotify, toastErrorNotify } from "../helpers/ToastNotify";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import loadingGif from "../assets/loading.gif";
 import googlePng from "../assets/google.png";
-import {Avatar,Button,CssBaseline,Grid,Paper,TextField,Typography,Box,} from "@mui/material";
+import { Avatar, Button, CssBaseline, Grid, Paper, TextField, Typography, Box, } from "@mui/material";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { createUser, signUpWithGoogle } from "../auth/firebase";
 import { grey } from "@mui/material/colors";
@@ -27,7 +27,7 @@ const styles = {
   root: {
     "& .MuiPaper-root": {
       borderRadius: "30px",
-    //   boxShadow: "10px 10px 5px 0px rgba(0,0,0,0.75);",
+      //   boxShadow: "10px 10px 5px 0px rgba(0,0,0,0.75);",
       height: "fit-content",
       marginTop: 10,
       maxWidth: "500px",
@@ -35,14 +35,14 @@ const styles = {
     },
   },
   image: {
-//     backgroundImage: "url(https://picsum.photos/1600/900)",
-//     backgroundRepeat: "no-repeat",
+    //     backgroundImage: "url(https://picsum.photos/1600/900)",
+    //     backgroundRepeat: "no-repeat",
     backgroundColor: grey[400],
-//     backgroundSize: "cover",
-//     backgroundPosition: "center",
-//     width: "100%",
-//     paddingTop: "40px",
-   },
+    //     backgroundSize: "cover",
+    //     backgroundPosition: "center",
+    //     width: "100%",
+    //     paddingTop: "40px",
+  },
   paper: {
     padding: 8,
     display: "flex",
@@ -50,7 +50,7 @@ const styles = {
     alignItems: "center",
     backgroundColor: grey[200],
     borderRadius: "30px",
-   
+
   },
   avatar: {
     width: 200,
@@ -66,10 +66,10 @@ const styles = {
     backgroundColor: "grey",
     color: "white",
     fontWeight: "bold",
-      "&:hover": {
-        backgroundColor: "orange",
-        color: "black"
-      },
+    "&:hover": {
+      backgroundColor: "orange",
+      color: "black"
+    },
   },
   header: {
     fontFamily: "Girassol",
@@ -109,19 +109,19 @@ function Register() {
   const [loading, setLoading] = useState(false);
 
 
- 
+
 
   const formik = useFormik({
     initialValues: {
-      name : "",
+      name: "",
       email: "",
       password: "",
     },
     validationSchema: validationSchema,
     onSubmit: async (e, values) => {
       e.preventDefault();
-        console.log(values)
-        
+      console.log(values)
+
       setLoading(true);
       try {
         const email = values.email
@@ -130,7 +130,7 @@ function Register() {
 
         createUser(email, password, navigate, displayName);
         //navigate("/");
-       // toastSuccessNotify("Logged in successfully!");
+        // toastSuccessNotify("Logged in successfully!");
       } catch (error) {
         //toastErrorNotify(error.message);
       }
@@ -144,21 +144,21 @@ function Register() {
     signUpWithGoogle(navigate);
   };
 
-//   useEffect(() => {
-//     if (currentUser) {
-//       navigate("/");
-//     }
-//      console.log({ currentUser });
-//   }, [currentUser, navigate]);
+  //   useEffect(() => {
+  //     if (currentUser) {
+  //       navigate("/");
+  //     }
+  //      console.log({ currentUser });
+  //   }, [currentUser, navigate]);
 
   return (
-    <Grid container component="main" sx={styles.root}> 
-     {/* //ana konteynr  */}
+    <Grid container component="main" sx={styles.root}>
+      {/* //ana konteynr  */}
       <CssBaseline />
-      <Grid container justifyContent="center" sx={styles.image}> 
-      {/* // büyük bgfoto nun olduğu yer  */}
-        <Grid item xs={12} sm={8} md={5} m={5} component={Paper}  square> 
-        {/* //* paper şeklind companent kabartmayı sağlıyor carddan farkı elevetion kabartma miktarını  squer şeklini  */}
+      <Grid container justifyContent="center" sx={styles.image}>
+        {/* // büyük bgfoto nun olduğu yer  */}
+        <Grid item xs={12} sm={8} md={5} m={5} component={Paper} square>
+          {/* //* paper şeklind companent kabartmayı sağlıyor carddan farkı elevetion kabartma miktarını  squer şeklini  */}
           <Box sx={styles.paper}>
             <Avatar sx={styles.avatar}>
               <img src={AccountCircleIcon} alt="user" />
@@ -167,8 +167,8 @@ function Register() {
               ── Register ──
             </Typography>
             <form sx={styles.form} onSubmit={formik.handleSubmit}>
-            <TextField
-              sx={{color : "grey"}}
+              <TextField
+                sx={{ color: "grey" }}
                 variant="outlined"
                 margin="normal"
                 fullWidth
@@ -184,7 +184,7 @@ function Register() {
                 helperText={formik.touched.displayName && formik.errors.displayName}
               />
               <TextField
-              sx={{color : "grey"}}
+                sx={{ color: "grey" }}
                 variant="outlined"
                 margin="normal"
                 fullWidth
@@ -200,7 +200,7 @@ function Register() {
                 helperText={formik.touched.email && formik.errors.email}
               />
               <TextField
-                sx={{color : "grey"}}
+                sx={{ color: "grey" }}
                 variant="outlined"
                 margin="normal"
                 fullWidth
@@ -231,7 +231,7 @@ function Register() {
                   >
                     SıgnIn
                   </Button>
-                  
+
                   <Button
                     fullWidth
                     variant="contained"
@@ -250,7 +250,7 @@ function Register() {
             </form>
           </Box>
         </Grid>
-      </Grid> 
+      </Grid>
     </Grid>
   );
 }

@@ -7,15 +7,15 @@ const initialState = {
     loadingCategory: false,
     errorCategory: false,
 };
-console.log("here")
+
 export const getCategory = createAsyncThunk(
     "getCategory", //! action types
-    async ({ rejectWithValue }) => {
+
+    async (thunkAPI, { rejectWithValue }) => {
         //! asyn callback function
-        const url = `https://fakestoreapi.com/products/categories`; 
+        const url = `https://fakestoreapi.com/products/categories`;
         try {
             const { data } = await axios(url);
-             
             return data;
         } catch (error) {
             console.log(error);
@@ -23,6 +23,7 @@ export const getCategory = createAsyncThunk(
         }
     }
 );
+
 
 const categorySlice = createSlice({
     name: "category",
@@ -41,6 +42,7 @@ const categorySlice = createSlice({
             .addCase(getCategory.fulfilled, (state, { payload }) => {
                 state.categoryList = payload;
                 state.loadingCategory = false;
+                console.log(payload)
             })
             .addCase(getCategory.rejected, (state, { payload }) => {
                 state.loading = false;

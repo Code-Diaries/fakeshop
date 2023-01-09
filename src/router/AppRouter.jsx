@@ -3,7 +3,7 @@ import Login from "../pages/Login"
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from '../components/Navbar/Navbar'
-import HomePage from '../pages/HomePage'
+import Home from '../pages/Home'
 import ProductDetail from '../pages/ProductDetail'
 import ShippingAdress from '../pages/ShippingAdress'
 import PrivateRouter from './PrivateRouter'
@@ -19,14 +19,14 @@ const AppRouter = () => {
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/productDetail' element={<PrivateRouter />}>
-         <Route path="" element={<ProductDetail />} />
+          <Route path="" element={<ProductDetail />} />
 
         </Route>
-       
-          <Route path='/shippingAdress' element={<PrivateRouter />}>
-            <Route path="" element={<ShippingAdress />} />
-          </Route>
-          <Route path='/favoriteproduct' element={<FavoritePro />} >  </Route>
+
+        <Route path='/shippingAdress' element={<PrivateRouter />}>
+          <Route path="" element={<ShippingAdress />} />
+        </Route>
+        <Route path='/favoriteproduct' element={<FavoritePro />} >  </Route>
       </Routes>
     </BrowserRouter>
 
