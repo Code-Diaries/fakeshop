@@ -3,19 +3,19 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
-import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import FavoriteIcon from './FavoriteIcon';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToFavoriteList, removeFromFavouriteList } from '../../../features/favoriteSlice/favoriteSlice';
+import { useNavigate } from 'react-router';
 
 
 const CardItem = ({ item, index }) => {
     const dispatch = useDispatch()
+    const navigate = useNavigate();
     const { favoriteList } = useSelector(state => state.favorite)
 
     const favoriteHandler = (item) => {
@@ -60,7 +60,8 @@ const CardItem = ({ item, index }) => {
                     {item?.price} TL
                 </Typography>
                 <div style={{ background: "#EDCF65", padding: "1rem", width: "4rem", display: "flex", justifyContent: "space-evenly" }}>
-                    <RemoveRedEyeIcon />
+                    <RemoveRedEyeIcon
+                        onClick={() => navigate("/productDetail", { state: item })} />
                     <ShoppingBasketIcon />
                 </div>
             </CardActions>
