@@ -10,14 +10,14 @@ import {
     TextField,
     Button,
     Paper
-} from "@material-ui/core";
-import AddIcCallIcon from '@material-ui/icons/AddIcCall';
-import MailIcon from '@material-ui/icons/Mail';
-import RoomIcon from '@material-ui/icons/Room';
-import InstagramIcon from '@material-ui/icons/Instagram';
-import TwitterIcon from '@material-ui/icons/Twitter';
-import FacebookIcon from '@material-ui/icons/Facebook';
-import ForwardIcon from '@material-ui/icons/Forward';
+} from "@mui/material";
+import AddIcCallIcon from '@mui/icons-material/AddIcCall';
+import MailIcon from '@mui/icons-material/Mail';
+import RoomIcon from '@mui/icons-material/Room';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import ForwardIcon from '@mui/icons-material/Forward';
 import { flexbox } from "@mui/system";
 
 
