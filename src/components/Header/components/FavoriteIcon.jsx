@@ -8,24 +8,15 @@ const FavoriteIcon = ({ item }) => {
     const { favoriteList } = useSelector(state => state.favorite)
     const dispatch = useDispatch()
 
-    // console.log(item)
-    // console.log(items.includes(item))
 
-    // useEffect(() => {
-
-    //     const items = JSON.parse(localStorage.getItem('items'))
-
-    //     if ((items?.length > 0) && (favoriteList == [])) {
-    //         return dispatch(addToFavoriteList([...items]))
-    //     }
-
-    // }, [])
 
     console.log(favoriteList)
+    console.log(favoriteList.map((i) => i.id))
+    console.log(item.id)
 
     return (
         <div>
-            {favoriteList?.includes(item) ? <FavoriteRoundedIcon /> : <FavoriteBorderRoundedIcon />}
+            {favoriteList?.map((i) => i.id).includes(item.id) ? <FavoriteRoundedIcon /> : <FavoriteBorderRoundedIcon />}
         </div>
     )
 }
