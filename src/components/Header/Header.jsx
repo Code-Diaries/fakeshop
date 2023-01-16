@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProduct, setFinalList, setProduct } from '../../features/productSlice/productSlice';
+import { getProduct, setFinalList } from '../../features/productSlice/productSlice';
 import { getCategory } from '../../features/categorySlice/categorySlice';
 import { setFind } from '../../features/filterSlice/filterSlice';
 import CardItem from './components/CardItem';
@@ -25,6 +25,8 @@ const Header = () => {
         dispatch(getCategory())
 
     }, [])
+
+
 
     dispatch(setFinalList(find?.length ? find : displayArray))
     console.log(sortingList)
