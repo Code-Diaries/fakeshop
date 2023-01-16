@@ -5,11 +5,13 @@ import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
+import { useNavigate } from 'react-router';
 
 
 
 const FavoritePro = () => {
     const { favoriteList } = useSelector(state => state.favorite)
+    const navigate = useNavigate();
     console.log(favoriteList)
     return (
         <>
@@ -48,7 +50,8 @@ const FavoritePro = () => {
                                     {item?.price} TL
                                 </Typography>
                                 <div style={{ background: "#EDCF65", padding: "1rem", width: "4rem", display: "flex", justifyContent: "space-evenly" }}>
-                                    <RemoveRedEyeIcon />
+                                    <RemoveRedEyeIcon
+                                        onClick={() => navigate("/productDetail", { state: item })} />
                                     <ShoppingBasketIcon />
                                 </div>
                             </CardActions>

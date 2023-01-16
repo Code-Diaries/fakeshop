@@ -5,8 +5,6 @@ import productReducer from "../features/productSlice/productSlice"
 import filterReducer from "../features/filterSlice/filterSlice"
 import searchReducer from "../features/searchSlice/searchSlice";
 import darkmodeReducer from "../features/darkmodeSice/darkmodeSlice";
-
-import authReducer from "../features/authSlice";
 import favoriteSliceReducer from "../features/favoriteSlice/favoriteSlice";
 
 
