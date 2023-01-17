@@ -10,6 +10,7 @@ import CardItem from './components/CardItem';
 import SearchCom from './components/SearchCom';
 import CategoryCom from './components/CategoryCom';
 import PriceSorting from './components/PriceSorting';
+import BasketModal from './components/BasketModal';
 
 
 const Header = () => {
@@ -32,7 +33,7 @@ const Header = () => {
     console.log(sortingList)
     return (
         <>
-
+            <BasketModal />
             <div style={{ display: "flex", justifyContent: "space-between", marginTop: "2rem" }}>
                 <div>
                     <SearchCom productList={productList} filteredList={filteredList} setFind={setFind} />

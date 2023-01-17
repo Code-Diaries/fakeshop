@@ -9,10 +9,17 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { setBasketOpen } from '../../features/basketSlice/basketSlice';
+import { useDispatch } from 'react-redux';
+import BasketModal from '../Header/components/BasketModal';
 
 
 const Navbar = () => {
   const { favoriteList } = useSelector(state => state.favorite)
+  const { basketOpen } = useSelector((state) => state.basket);
+  const dispatch = useDispatch();
+  const handleOpen = () => dispatch(setBasketOpen(basketOpen));
+  const handleClose = () => dispatch(setBasketOpen(!basketOpen));
 
   const navigate = useNavigate();
 
@@ -77,7 +84,8 @@ const Navbar = () => {
           color="inherit"
         >
           <Badge badgeContent={2} color="error">
-            <AddShoppingCartIcon />
+            <AddShoppingCartIcon
+            />
           </Badge>
         </IconButton>
         <p>Basket</p>
@@ -146,7 +154,10 @@ const Navbar = () => {
               color="inherit">
               <Badge badgeContent={2} color="error">
                 {/* burdaki badge contente state gelecek */}
-                <AddShoppingCartIcon />
+                <AddShoppingCartIcon
+                  onClick={handleOpen}
+                  onClose={handleClose}
+                />
               </Badge>
             </IconButton>
             <IconButton
@@ -184,7 +195,7 @@ const Navbar = () => {
         </Toolbar>
       </AppBar>
       {renderMobileMenu}
-
+      <BasketModal />
     </Box>
   );
 }

@@ -10,9 +10,9 @@ const FavoriteIcon = ({ item }) => {
 
 
 
-    console.log(favoriteList)
-    console.log(favoriteList.map((i) => i.id))
-    console.log(item.id)
+    // console.log(favoriteList)
+    // console.log(favoriteList.map((i) => i.id))
+    // console.log(item.id)
 
     return (
         <div>
