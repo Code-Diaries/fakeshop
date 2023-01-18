@@ -39,20 +39,20 @@ const BasketModal = () => {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box sx={style} style={{ border: "2px solid red" }}>
-                    <div style={{ border: "2px solid red" }}>
+                <Box sx={style}>
+                    <div >
                         {
                             basketItem?.map((item, index) => {
                                 console.log(item);
-                                return (<div style={{ display: "flex", border: "2px solid red" }} key={index}>
+                                return (<div style={{ display: "flex" }} key={index}>
                                     <Card>
                                         <CardMedia
                                             component="img"
                                             alt={item?.title}
-                                            width="50"
+                                            width="70"
                                             height="70"
                                             image={item?.image}
-                                            style={{ objectFit: "contain", background: "white", border: "2px solid orange" }}
+                                            style={{ objectFit: "contain", background: "white" }}
                                         />
 
 
@@ -62,7 +62,7 @@ const BasketModal = () => {
                                         width: 250,
                                         height: 70,
                                     }}
-                                        style={{ border: "2px solid orange" }}>
+                                    >
                                         <CardContent>
                                             <Typography sx={{ fontSize: 10 }} color="text.secondary" gutterBottom>
                                                 {item?.title}
