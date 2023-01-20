@@ -42,17 +42,18 @@ const BasketModal = () => {
                 <Box sx={style}>
                     <div >
                         {
-                            basketItem?.map((item, index) => {
+                            basketItem?.filter((i) => basketItem?.filter((a) => a.id !== i.id)).map((item, index) => {
                                 console.log(item);
+                                console.log((basketItem?.filter((i) => i?.id === item?.id)));
+
                                 return (<div style={{ display: "flex" }} key={index}>
                                     <Card>
                                         <CardMedia
                                             component="img"
                                             alt={item?.title}
-                                            width="70"
-                                            height="70"
+                                            height="100"
                                             image={item?.image}
-                                            style={{ objectFit: "contain", background: "white" }}
+                                            style={{ objectFit: "contain", background: "white", maxWidth: 70, minWidth: 70 }}
                                         />
 
 
@@ -60,8 +61,9 @@ const BasketModal = () => {
 
                                     <Card sx={{
                                         width: 250,
-                                        height: 70,
+                                        height: 100,
                                     }}
+
                                     >
                                         <CardContent>
                                             <Typography sx={{ fontSize: 10 }} color="text.secondary" gutterBottom>
@@ -70,6 +72,9 @@ const BasketModal = () => {
 
                                             <Typography sx={{ fontSize: 12, color: "red", fontWeight: "bold" }} >
                                                 {item?.price} TL
+                                            </Typography>
+                                            <Typography sx={{ fontSize: 12, color: "black", fontWeight: "bold" }} >
+                                                {(basketItem?.filter((i) => i?.id === item?.id)).length} Qty
                                             </Typography>
 
 
