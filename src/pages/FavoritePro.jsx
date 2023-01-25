@@ -1,17 +1,28 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Typography, Card, CardContent, CardActions, CardMedia } from '@mui/material';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import { useNavigate } from 'react-router';
+import { setBasketItem, setBasketOpen, setBasketPiece } from '../features/basketSlice/basketSlice';
 
 
 
 const FavoritePro = () => {
     const { favoriteList } = useSelector(state => state.favorite)
     const navigate = useNavigate();
+    const dispatch = useDispatch()
+    const { basketOpen, basketItem } = useSelector((state) => state.basket);
+
+    const handleAddFavorite = (item) => {
+        dispatch(setBasketOpen(basketOpen))
+        dispatch(setBasketItem(item))
+        dispatch(setBasketPiece())
+        console.log("clicked");
+        dispatch(setBasketOpen(!basketOpen))
+    };
     console.log(favoriteList)
     return (
         <>
@@ -52,7 +63,8 @@ const FavoritePro = () => {
                                 <div style={{ background: "#EDCF65", padding: "1rem", width: "4rem", display: "flex", justifyContent: "space-evenly" }}>
                                     <RemoveRedEyeIcon
                                         onClick={() => navigate("/productDetail", { state: item })} />
-                                    <ShoppingBasketIcon />
+                                    <ShoppingBasketIcon
+                                        onClick={() => handleAddFavorite(item)} />
                                 </div>
                             </CardActions>
                         </Card>

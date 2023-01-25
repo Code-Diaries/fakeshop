@@ -44,9 +44,9 @@ const BasketModal = () => {
                         {
                             basketItem?.map((item, index) => {
 
-                                console.log(item);
-                                console.log((basketItem?.filter((i) => i?.id === item?.id)));
-                                console.log((basketItem?.filter((i) => i?.id !== item?.id)));
+                                // console.log(item);
+                                // console.log((basketItem?.filter((i) => i?.id === item?.id)));
+                                // console.log((basketItem?.filter((i) => i?.id !== item?.id)));
 
                                 return (<div style={{ display: "flex" }} key={index}>
                                     <Card>

@@ -16,7 +16,7 @@ import BasketModal from '../Header/components/BasketModal';
 
 const Navbar = () => {
   const { favoriteList } = useSelector(state => state.favorite)
-  const { basketOpen, basketPiece } = useSelector((state) => state.basket);
+  const { basketOpen, basketCount } = useSelector((state) => state.basket);
   const dispatch = useDispatch();
   const handleOpen = () => dispatch(setBasketOpen(basketOpen));
   const handleClose = () => dispatch(setBasketOpen(!basketOpen));
@@ -83,7 +83,7 @@ const Navbar = () => {
 
           color="inherit"
         >
-          <Badge badgeContent={basketPiece} color="error">
+          <Badge badgeContent={basketCount} color="error">
             <AddShoppingCartIcon
             />
           </Badge>
@@ -152,7 +152,7 @@ const Navbar = () => {
               size="large"
               aria-label="show 17 new notifications"
               color="inherit">
-              <Badge badgeContent={basketPiece} color="error">
+              <Badge badgeContent={basketCount} color="error">
                 {/* burdaki badge contente state gelecek */}
                 <AddShoppingCartIcon
                   onClick={handleOpen}
