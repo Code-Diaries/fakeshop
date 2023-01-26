@@ -4,11 +4,13 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { useDispatch } from 'react-redux';
-import { setBasketOpen } from '../../../features/basketSlice/basketSlice';
+import { clearAll, removeItemFromBasket, setBasketCount, setBasketItem, setBasketOpen } from '../../../features/basketSlice/basketSlice';
 import { useSelector } from 'react-redux';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+
 
 const style = {
     position: 'absolute',
@@ -39,6 +41,17 @@ const BasketModal = () => {
         }
     }, [])
     console.log(filteredArr);
+
+    const handleDelete = (item) => {
+        dispatch(removeItemFromBasket(item))
+        console.log("delete");
+    }
+    const handleClear = () => {
+
+        dispatch(clearAll())
+
+
+    }
 
     return (
         <div>
@@ -77,18 +90,24 @@ const BasketModal = () => {
                                     }}
 
                                     >
-                                        <CardContent>
-                                            <Typography sx={{ fontSize: 10 }} color="text.secondary" gutterBottom>
-                                                {item?.title}
-                                            </Typography>
+                                        <CardContent style={{ display: "flex", justifyContent: "space-between" }}>
+                                            <div>
+                                                <Typography sx={{ fontSize: 10 }} color="text.secondary" gutterBottom>
+                                                    {item?.title}
+                                                </Typography>
 
-                                            <Typography sx={{ fontSize: 12, color: "red", fontWeight: "bold" }} >
-                                                {item?.price} TL
-                                            </Typography>
-                                            <Typography sx={{ fontSize: 12, color: "black", fontWeight: "bold" }} >
-                                                {(basketItem?.filter((i) => i?.id === item?.id)).length} Qty
-                                            </Typography>
+                                                <Typography sx={{ fontSize: 12, color: "red", fontWeight: "bold" }} >
+                                                    {item?.price} TL
+                                                </Typography>
+                                                <Typography sx={{ fontSize: 12, color: "black", fontWeight: "bold" }} >
 
+                                                    {(basketItem?.filter((i) => i?.id === item?.id)).length} Qty
+                                                </Typography>
+                                            </div>
+                                            <div>
+                                                <DeleteForeverIcon
+                                                    onClick={() => handleDelete(item)} />
+                                            </div>
 
                                         </CardContent>
 
@@ -101,8 +120,10 @@ const BasketModal = () => {
                         }
                     </div>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        <Button size="small" style={{ background: "grey", color: "black" }}>ADD TO BASKET</Button>
+
                         <Button size="small" style={{ background: "orange", color: "white" }}>BUY NOW</Button>
+                        <Button size="small" style={{ background: "grey", color: "black" }}
+                            onClick={handleClear}>CLEAR CHART</Button>
                     </Typography>
                 </Box>
             </Modal>

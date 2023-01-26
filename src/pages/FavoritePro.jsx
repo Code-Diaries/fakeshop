@@ -6,7 +6,7 @@ import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import { useNavigate } from 'react-router';
-import { setBasketItem, setBasketOpen, setBasketPiece } from '../features/basketSlice/basketSlice';
+import { setBasketCount, setBasketItem, setBasketOpen } from '../features/basketSlice/basketSlice';
 
 
 
@@ -19,7 +19,7 @@ const FavoritePro = () => {
     const handleAddFavorite = (item) => {
         dispatch(setBasketOpen(basketOpen))
         dispatch(setBasketItem(item))
-        dispatch(setBasketPiece())
+        dispatch(setBasketCount())
         console.log("clicked");
         dispatch(setBasketOpen(!basketOpen))
     };
