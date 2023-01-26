@@ -18,9 +18,9 @@ const basketSlice = createSlice({
             console.log(state.basketItem);
 
         },
-        setBasketCount: (state) => {
-
-            state.basketCount = state.basketItem.length
+        setBasketCount: (state, { payload }) => {
+            state.basketPiece = [...state.basketPiece, payload]
+            state.basketCount = state.basketPiece.length
             localStorage.setItem('basketCount', JSON.stringify(state.basketCount))
 
         },
