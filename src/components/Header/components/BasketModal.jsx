@@ -30,6 +30,15 @@ const BasketModal = () => {
     const handleClose = () => dispatch(setBasketOpen(!basketOpen));
 
     console.log(basketItem);
+    let filteredArr = basketItem?.reduce((acc, current) => {
+        const x = acc.find(item => item.id === current.id);
+        if (!x) {
+            return acc.concat([current]);
+        } else {
+            return acc;
+        }
+    }, [])
+    console.log(filteredArr);
 
     return (
         <div>
@@ -42,7 +51,8 @@ const BasketModal = () => {
                 <Box sx={style}>
                     <div >
                         {
-                            basketItem?.map((item, index) => {
+
+                            filteredArr?.map((item, index) => {
 
                                 // console.log(item);
                                 // console.log((basketItem?.filter((i) => i?.id === item?.id)));

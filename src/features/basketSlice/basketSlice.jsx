@@ -12,13 +12,15 @@ const basketSlice = createSlice({
     initialState,
     reducers: {
         setBasketItem: (state, { payload }) => {
-            state.basketItem = state.basketItem.filter(item => item.id !== payload.id)
+
+            state.basketItem = [...state.basket, payload]
             localStorage.setItem('basket', JSON.stringify(state.basketItem))
+
 
         },
         setBasketCount: (state, { payload }) => {
-            state.basketPiece = [...state.basketPiece, payload];
-            state.basketCount = state.basketPiece.length
+
+            state.basketCount = state.basketItem.length
             localStorage.setItem('basketCount', JSON.stringify(state.basketCount))
 
         },
