@@ -20,7 +20,7 @@ const CardItem = ({ item, index }) => {
     const { favoriteList } = useSelector(state => state.favorite)
     const { basketOpen, basketItem } = useSelector((state) => state.basket);
 
-    const handleAdd = () => {
+    const handleAdd = (item) => {
         dispatch(setBasketOpen(basketOpen))
         dispatch(setBasketItem(item))
         dispatch(setBasketPiece())
@@ -75,7 +75,7 @@ const CardItem = ({ item, index }) => {
                     <RemoveRedEyeIcon
                         onClick={() => navigate("/productDetail", { state: item })} />
                     <ShoppingBasketIcon
-                        onClick={handleAdd}
+                        onClick={() => handleAdd(item)}
                     />
                 </div>
             </CardActions>
