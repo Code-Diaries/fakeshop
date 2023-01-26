@@ -11,7 +11,7 @@ import FavoriteIcon from './FavoriteIcon';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToFavoriteList, removeFromFavouriteList } from '../../../features/favoriteSlice/favoriteSlice';
 import { useNavigate } from 'react-router';
-import { setBasketItem, setBasketOpen, setBasketPiece } from '../../../features/basketSlice/basketSlice';
+import { setBasketCount, setBasketItem, setBasketOpen } from '../../../features/basketSlice/basketSlice';
 
 
 const CardItem = ({ item, index }) => {
@@ -23,7 +23,7 @@ const CardItem = ({ item, index }) => {
     const handleAdd = (item) => {
         dispatch(setBasketOpen(basketOpen))
         dispatch(setBasketItem(item))
-        dispatch(setBasketPiece())
+        dispatch(setBasketCount())
         console.log("clicked");
         dispatch(setBasketOpen(!basketOpen))
     };
