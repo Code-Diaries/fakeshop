@@ -27,7 +27,7 @@ const style = {
 
 
 const BasketModal = () => {
-    const { basketOpen, basketItem } = useSelector((state) => state.basket);
+    const { basketOpen, basketItem, basketCount } = useSelector((state) => state.basket);
     const dispatch = useDispatch();
     const handleClose = () => dispatch(setBasketOpen(!basketOpen));
 
@@ -119,6 +119,10 @@ const BasketModal = () => {
                             })
                         }
                     </div>
+
+                    <Typography id="modal-modal-description" sx={{ mt: 2, mr: 10 }} style={{ textAlign: "end" }}>
+                        Subtotal({basketCount} items):{(basketItem?.reduce((acc, current) => acc?.price + current?.price))}TL
+                    </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
 
                         <Button size="small" style={{ background: "orange", color: "white" }}>BUY NOW</Button>
