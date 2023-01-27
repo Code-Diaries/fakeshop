@@ -33,7 +33,10 @@ const BasketModal = () => {
 
     console.log(basketItem);
     let filteredArr = basketItem?.reduce((acc, current) => {
+        console.log(acc);
         const x = acc.find(item => item.id === current.id);
+        console.log(acc);
+        console.log(current.price);
         if (!x) {
             return acc.concat([current]);
         } else {
@@ -52,6 +55,7 @@ const BasketModal = () => {
 
 
     }
+    console.log((basketItem?.reduce((acc, current) => acc + current?.price, 0)));
 
     return (
         <div>
@@ -121,7 +125,7 @@ const BasketModal = () => {
                     </div>
 
                     <Typography id="modal-modal-description" sx={{ mt: 2, mr: 10 }} style={{ textAlign: "end" }}>
-                        Subtotal({basketCount} items):{(basketItem?.reduce((acc, current) => acc?.price + current?.price))}TL
+                        Subtotal({basketCount} items):{(basketItem?.reduce((acc, current) => acc + current?.price, 0))}TL
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
 
