@@ -4,12 +4,15 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { useDispatch } from 'react-redux';
-import { clearAll, removeItemFromBasket, setBasketCount, setBasketItem, setBasketOpen } from '../../../features/basketSlice/basketSlice';
+import { clearAll, removeItemFromBasket, setBasketCount, setBasketDecrease, setBasketItem, setBasketOpen } from '../../../features/basketSlice/basketSlice';
 import { useSelector } from 'react-redux';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import TextField from '@mui/material/TextField';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 
 const style = {
@@ -31,14 +34,13 @@ const BasketModal = () => {
     const dispatch = useDispatch();
     const handleClose = () => dispatch(setBasketOpen(!basketOpen));
 
+
     console.log(basketItem);
     let filteredArr = basketItem?.reduce((acc, current) => {
-        console.log(acc);
-        const x = acc.find(item => item.id === current.id);
-        console.log(acc);
-        console.log(current.price);
+
+        const x = acc?.find(item => item.id === current.id);
         if (!x) {
-            return acc.concat([current]);
+            return acc?.concat([current]);
         } else {
             return acc;
         }
@@ -50,13 +52,26 @@ const BasketModal = () => {
         console.log("delete");
     }
     const handleClear = () => {
+        dispatch(clearAll())
+    }
+    const handleIncrease = (item) => {
+        dispatch(setBasketItem(item))
+        dispatch(setBasketCount())
+    }
+    const handleDecrease = (item) => {
+        console.log(basketItem?.findIndex((i) => i === item));
+        let index = basketItem?.findIndex((i) => i === item)
+        console.log(index);
 
         dispatch(clearAll())
-
+        console.log(basketItem)
+        dispatch(setBasketDecrease(...([...basketItem]?.splice(index, 1))))
+        console.log(basketItem)
+        dispatch(setBasketCount())
 
     }
-    console.log((basketItem?.reduce((acc, current) => acc + current?.price, 0)));
-
+    // console.log((basketItem?.reduce((acc, current) => acc + current?.price, 0)));
+    console.log(basketItem)
     return (
         <div>
             <Modal
@@ -90,23 +105,31 @@ const BasketModal = () => {
 
                                     <Card sx={{
                                         width: 250,
-                                        height: 100,
+                                        height: 120,
                                     }}
 
                                     >
                                         <CardContent style={{ display: "flex", justifyContent: "space-between" }}>
                                             <div>
-                                                <Typography sx={{ fontSize: 10 }} color="text.secondary" gutterBottom>
+                                                <Typography sx={{ fontSize: 12 }} color="text.secondary" gutterBottom>
                                                     {item?.title}
                                                 </Typography>
 
-                                                <Typography sx={{ fontSize: 12, color: "red", fontWeight: "bold" }} >
+                                                <Typography sx={{ fontSize: 14, color: "red", fontWeight: "bold" }} >
                                                     {item?.price} TL
                                                 </Typography>
-                                                <Typography sx={{ fontSize: 12, color: "black", fontWeight: "bold" }} >
+                                                <div style={{ fontSize: 12, color: "black", fontWeight: "bold", display: "flex", justifyContent: "flex-start" }} >
 
-                                                    {(basketItem?.filter((i) => i?.id === item?.id)).length} Qty
-                                                </Typography>
+                                                    <TextField id="outlined-basic" variant="outlined" value={(basketItem?.filter((i) => i?.id === item?.id)).length}
+                                                        size="small" />
+                                                    <div>
+                                                        <ArrowDropUpIcon style={{ height: "1rem" }} onClick={() => handleIncrease(item)} />
+                                                        <ArrowDropDownIcon style={{ height: "1rem" }}
+                                                            onClick={() => handleDecrease(item)} />
+                                                    </div>
+
+
+                                                </div>
                                             </div>
                                             <div>
                                                 <DeleteForeverIcon
@@ -125,7 +148,7 @@ const BasketModal = () => {
                     </div>
 
                     <Typography id="modal-modal-description" sx={{ mt: 2, mr: 10 }} style={{ textAlign: "end" }}>
-                        Subtotal({basketCount} items):{(basketItem?.reduce((acc, current) => acc + current?.price, 0))}TL
+                        Subtotal({basketCount} items):{(basketItem?.reduce((acc, current) => acc + current?.price, 0)).toFixed(2)}TL
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
 

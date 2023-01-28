@@ -11,7 +11,7 @@ const basketSlice = createSlice({
     initialState,
     reducers: {
         setBasketItem: (state, { payload }) => {
-
+            console.log(payload)
             state.basketItem = [...state.basketItem, payload]
             localStorage.setItem('basket', JSON.stringify(state.basketItem))
             console.log(state.basketItem);
@@ -38,10 +38,17 @@ const basketSlice = createSlice({
             localStorage.setItem('basket', JSON.stringify(state.basketItem))
             state.basketCount = ""
             localStorage.setItem('basketCount', JSON.stringify(state.basketCount))
-        }
+        },
+        setBasketDecrease: (state, { payload }) => {
+            console.log(payload)
+            state.basketItem = payload
+            localStorage.setItem('basket', JSON.stringify(state.basketItem))
+            console.log(state.basketItem);
+
+        },
     }
 });
 
-export const { setBasketItem, setBasketCount, setBasketOpen, removeItemFromBasket, clearAll } = basketSlice.actions
+export const { setBasketItem, setBasketCount, setBasketOpen, removeItemFromBasket, clearAll, setBasketDecrease } = basketSlice.actions
 
 export default basketSlice.reducer

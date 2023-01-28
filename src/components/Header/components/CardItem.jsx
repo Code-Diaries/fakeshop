@@ -27,8 +27,8 @@ const CardItem = ({ item, index }) => {
         console.log("clicked");
         dispatch(setBasketOpen(!basketOpen))
     };
-    console.log(basketOpen);
-    console.log(basketItem);
+    // console.log(basketOpen);
+    // console.log(basketItem);
 
     const favoriteHandler = (item) => {
 
