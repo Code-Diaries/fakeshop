@@ -23,6 +23,8 @@ const Header = () => {
         dispatch(getProduct())  
     }, [])
 
+
+
     dispatch(setFinalList(find?.length ? find : displayArray))
     console.log(sortingList)
     return (

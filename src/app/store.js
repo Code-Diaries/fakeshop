@@ -16,6 +16,7 @@ const store = configureStore({
     search: searchReducer,
     favorite: favoriteSliceReducer,
     darkmode: darkmodeReducer,
+
     auth: authReducer,
 
 
