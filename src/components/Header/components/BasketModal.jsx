@@ -60,13 +60,20 @@ const BasketModal = () => {
     }
     const handleDecrease = (item) => {
         console.log(basketItem?.findIndex((i) => i === item));
+
         let index = basketItem?.findIndex((i) => i === item)
+        let arrayforchange = [...basketItem]
+        arrayforchange.splice(index, 1)
+        console.log('arrayforchange', arrayforchange);
+
         console.log(index);
 
-        dispatch(clearAll())
-        console.log(basketItem)
-        dispatch(setBasketDecrease(...([...basketItem]?.splice(index, 1))))
-        console.log(basketItem)
+        console.log([...basketItem])
+        console.log(arrayforchange?.splice(index, 0))
+        dispatch(setBasketDecrease(arrayforchange))
+        // dispatch(setBasketDecrease(basketItem?.slice(index, index + 1)))
+        // dispatch(setBasketItem(arrayforchange))
+        // console.log(basketItem)
         dispatch(setBasketCount())
 
     }
