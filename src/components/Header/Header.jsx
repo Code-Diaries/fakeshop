@@ -21,13 +21,9 @@ const Header = () => {
 
     useEffect(() => {
         dispatch(getProduct())  
-    }, [])
-
-
-
+    }, []) 
     dispatch(setFinalList(find?.length ? find : displayArray))
-    console.log(sortingList)
-    return (
+     return (
         <>
 
             <div style={{ display: "flex", justifyContent: "space-between", marginTop: "2rem" }}>

@@ -18,8 +18,7 @@ function App() {
 
   useEffect(() => {
     userObserver(dispatch);
-    console.log("değişti kullanıcı")
-  }, [currentUser]);
+   }, [currentUser]);
 
   return (
     <BrowserRouter>

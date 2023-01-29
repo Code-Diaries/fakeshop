@@ -33,15 +33,12 @@ const auth = getAuth(app);
 
 export const createUser = async (email, password, navigate, displayName) => {
     //? yeni bir kullanıcı oluşturmak için kullanılan firebase metodu
-    try {
-        
-        console.log("girdi mi")
+    try { 
       let userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
         password
-      );
-      console.log(userCredential)
+      ); 
       //? kullanıcı profilini güncellemek için kullanılan firebase metodu
       await updateProfile(auth.currentUser, {
         displayName: displayName,
@@ -49,8 +46,7 @@ export const createUser = async (email, password, navigate, displayName) => {
 
       navigate("/");
       //toastSuccessNotify("Registered successfully!");
-     console.log(userCredential);
-     
+      
     } catch (error) {
         alert("kız hatalı oldu neden")
       //toastErrorNotify(error.message);
@@ -62,8 +58,7 @@ export const createUser = async (email, password, navigate, displayName) => {
   export const logIn = async (email, password, navigate) => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      console.log("hellooo")
-      navigate("/");
+       navigate("/");
       //toastSuccessNotify("Logged in successfully!");
     } catch (error) {
       //toastErrorNotify(error.message);
@@ -82,14 +77,11 @@ export const createUser = async (email, password, navigate, displayName) => {
           setUser({
             displayname: displayName,
             email: email,
-          })
-          
+          }) 
         );
-        console.log(user)
-        
+         
       } else {
-        console.log("user signed out");
-          dispatch(
+           dispatch(
               clearUser()
             );
       }
@@ -104,16 +96,11 @@ export const signUpWithGoogle = (navigate) => {
     const provider = new GoogleAuthProvider();
     //? Açılır pencere ile giriş yapılması için kullanılan firebase metodu
     signInWithPopup(auth, provider)
-      .then((result) => {
-        // console.log(result);
-        console.log(result)
-        console.log("hiiii")
+      .then((result) => { 
         navigate("/");
         //toastSuccessNotify("Logged in successfully!");
       })
-      .catch((error) => {
-        // Handle Errors here.
-        console.log(error);
+      .catch((error) => { 
       });
   };
 

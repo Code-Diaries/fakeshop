@@ -120,8 +120,7 @@ function Register() {
     validationSchema: validationSchema,
     onSubmit: async (e, values) => {
       e.preventDefault();
-      console.log(values)
-
+ 
       setLoading(true);
       try {
         const email = values.email
@@ -148,7 +147,7 @@ function Register() {
   //     if (currentUser) {
   //       navigate("/");
   //     }
-  //      console.log({ currentUser });
+  //     
   //   }, [currentUser, navigate]);
 
   return (

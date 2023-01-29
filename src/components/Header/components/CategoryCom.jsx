@@ -16,8 +16,7 @@ const CategoryCom = () => {
     const dispatch = useDispatch();
 
     const { categoryList, loadingCategory, errorCategory } = useSelector((state) => state.category);
-
-    console.log(categoryList)
+ 
     const handleChange = (e) => {
         dispatch(setSortingList([]))
         e.preventDefault()

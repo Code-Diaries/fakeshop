@@ -145,8 +145,7 @@ function Login() {
 //   useEffect(() => {
 //     if (currentUser) {
 //       navigate("/");
-//     }
-//      console.log({ currentUser });
+//     }  
 //   }, [currentUser, navigate]);
 
   return (

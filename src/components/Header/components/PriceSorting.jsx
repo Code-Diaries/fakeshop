@@ -25,8 +25,7 @@ const PriceSorting = () => {
         }
         setOption("Sort by")
     };
-    console.log(sortingList)
-    return (
+     return (
         <FormControl style={{ width: "10rem" }}>
             <InputLabel id="demo-simple-select-label">Sort by</InputLabel>
             <Select
