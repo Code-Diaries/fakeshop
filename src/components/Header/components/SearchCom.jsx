@@ -81,4 +81,4 @@ const SearchCom = ({ productList, setFind, filteredList }) => {
     )
 }
 
-export default SearchCom
+export default React.memo(SearchCom) 

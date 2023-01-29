@@ -3,7 +3,6 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
@@ -45,24 +44,30 @@ const CardItem = ({ item, index }) => {
             />
             <CardContent>
                 <div style={{ display: "flex", justifyContent: "space-between" }}>
-                    <Typography gutterBottom variant="h6" component="div" height={40} style={{ fontSize: ".6rem", marginTop: ".5rem" }}>
+                    <Typography gutterBottom variant="h5" component="div" sx={{
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        display: '-webkit-box',
+                        WebkitLineClamp: '2',
+                        WebkitBoxOrient: 'vertical',
+                    }} height={40} marginTop="0.5" fontSize="0.9rem" >
                         {item?.title}
                     </Typography>
 
-                    <Typography variant="h6" color="primary"   >
-                        <Rating name="read-only" value={item?.rating?.rate} readOnly style={{ fontSize: "1rem", marginTop: "0" }} />
+                    <Typography variant="h5" color="primary"   >
+                        <Rating name="read-only" value={item?.rating?.rate} readOnly marginTop="0" fontSize="1rem" />
                     </Typography>
                 </div>
 
             </CardContent>
             <CardActions style={{ marginTop: "0", display: "flex", justifyContent: "space-between" }}>
-                <Typography variant="h5" color="orange" style={{ fontSize: "1rem", fontWeight: "600" }}>
+                <Typography variant="h5" fontSize="1rem" color="orange" fontWeight="600" >
                     {item?.price} TL
                 </Typography>
-                <div style={{ background: "#EDCF65", padding: "1rem", width: "4rem", display: "flex", justifyContent: "space-evenly" }}>
+                <Box backgroundColor="orange" width="4rem" display="flex" padding="1rem" justifyContent="space-around">
                     <RemoveRedEyeIcon />
                     <ShoppingBasketIcon />
-                </div>
+                </Box>
             </CardActions>
         </Card>
     )

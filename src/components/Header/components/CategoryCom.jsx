@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, memo } from 'react'
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+ import Select from '@mui/material/Select';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCategory, setChoosen } from '../../../features/categorySlice/categorySlice';
 import { getFilter } from '../../../features/filterSlice/filterSlice';
@@ -23,14 +23,10 @@ const CategoryCom = () => {
         e.preventDefault()
         dispatch(setChoosen(e.target.value))
         dispatch(getFilter())
-        setSelect("Select Category")
-
-
+        setSelect("Select Category") 
     }
-    useEffect(() => {
-
-        dispatch(getCategory())
-
+    useEffect(() => { 
+        dispatch(getCategory()) 
     }, [])
     return (<>
         {errorCategory && (
@@ -70,4 +66,4 @@ const CategoryCom = () => {
     </>)
 }
 
-export default CategoryCom
+export default memo(CategoryCom)
