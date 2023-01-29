@@ -1,22 +1,13 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
-import { useDispatch, useSelector } from 'react-redux';
-import { addToFavoriteList } from '../../../features/favoriteSlice/favoriteSlice';
+import { useSelector } from 'react-redux';
 
 const FavoriteIcon = ({ item }) => {
-    const { favoriteList } = useSelector(state => state.favorite)
-    const dispatch = useDispatch()
-
-
-
-    console.log(favoriteList)
-    console.log(favoriteList.map((i) => i.id))
-    console.log(item.id)
-
+    const { favoriteList } = useSelector(state => state.favorite) 
     return (
         <div>
-            {favoriteList?.map((i) => i.id).includes(item.id) ? <FavoriteRoundedIcon /> : <FavoriteBorderRoundedIcon />}
+            {favoriteList?.includes(item) ? <FavoriteRoundedIcon style={{fill: "orange"}} /> : <FavoriteBorderRoundedIcon  />}
         </div>
     )
 }

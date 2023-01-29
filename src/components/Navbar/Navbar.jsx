@@ -9,11 +9,11 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import Link from '@mui/material/Link'; 
 
-
-const Navbar = () => {
-  const { favoriteList } = useSelector(state => state.favorite)
-
+ 
+const Navbar = () => { 
+  const { favoriteList } = useSelector(state => state.favorite)  
   const navigate = useNavigate();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -117,15 +117,14 @@ const Navbar = () => {
           <Typography
             variant="h6"
             noWrap
-            component="div"
+            component={Link}
             sx={{ display: { xs: 'none', sm: 'block' } }}
             onClick={() => navigate("/")}
           >
-            FAKESHOP
-          </Typography>
-
-
-
+            <Link href="/" underline="none">
+              FAKESHOP
+            </Link> 
+          </Typography> 
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
@@ -160,14 +159,15 @@ const Navbar = () => {
             >
               <AccountCircle onClick={() => navigate("/login")} />
 
-            </IconButton>
+            </IconButton> 
             <IconButton size="large"
               aria-label="show 17 new notifications"
               color="inherit">
+
+             
               <LightModeIcon />
               {/* karanlıksa light mode aydılıksa dark mode ikon */}
-            </IconButton>
-
+            </IconButton> 
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton
