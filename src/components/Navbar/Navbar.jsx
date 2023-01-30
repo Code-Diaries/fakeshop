@@ -7,7 +7,7 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import LightModeIcon from '@mui/icons-material/LightMode';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import { setBasketOpen } from '../../features/basketSlice/basketSlice';
@@ -127,14 +127,13 @@ const Navbar = () => {
           <Typography
             variant="h6"
             noWrap
-            component={Link}
             sx={{ display: { xs: 'none', sm: 'block' } }}
             onClick={() => navigate("/")}
           >
-            <Link href="/" underline="none">
-              FAKESHOP
-            </Link> 
-          </Typography> 
+
+            FAKESHOP
+
+          </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
@@ -172,15 +171,15 @@ const Navbar = () => {
             >
               <AccountCircle onClick={() => navigate("/login")} />
 
-            </IconButton> 
+            </IconButton>
             <IconButton size="large"
               aria-label="show 17 new notifications"
               color="inherit">
 
-             
+
               <LightModeIcon />
               {/* karanlıksa light mode aydılıksa dark mode ikon */}
-            </IconButton> 
+            </IconButton>
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton

@@ -1,7 +1,7 @@
 import React from 'react'
 import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const FavoriteIcon = ({ item }) => {
 
@@ -11,7 +11,7 @@ const FavoriteIcon = ({ item }) => {
 
     return (
         <div>
-            {favoriteList?.includes(item) ? <FavoriteRoundedIcon style={{fill: "orange"}} /> : <FavoriteBorderRoundedIcon  />}
+            {favoriteList?.includes(item) ? <FavoriteRoundedIcon style={{ fill: "orange" }} /> : <FavoriteBorderRoundedIcon />}
         </div>
     )
 }
