@@ -27,12 +27,9 @@ const Footer = () => {
         
         const handleChange = (e) => {
             setEmail(e.target.value)
-            console.log(email)
-        }
+         }
         const handleSubmit = () => {
-            setEmail("") 
-
-
+            setEmail("")   
         }
 
 

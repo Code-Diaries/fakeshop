@@ -9,27 +9,17 @@ const initialState = {
     errorFilter: false,
     find: ""
 };
-
-
-console.log("here");
-export const getFilter = createAsyncThunk(
-
-
-    "getFilter", //! action types
-
-    async (thunkAPI, { rejectWithValue }) => {
-
-        console.log(store.getState().category.choosen);
-        const selected = store.getState().category.choosen
-
+ 
+export const getFilter = createAsyncThunk( 
+    "getFilter", //! action types 
+    async (thunkAPI, { rejectWithValue }) => {  
+        const selected = store.getState().category.choosen 
         //! asyn callback function
         const url = `https://fakestoreapi.com/products/category/${selected}`;
         try {
-            const { data } = await axios(url);
-            console.log(data);
+            const { data } = await axios(url); 
             return data;
-        } catch (error) {
-            console.log(error);
+        } catch (error) { 
             return rejectWithValue("Something went wrong");
         }
     }

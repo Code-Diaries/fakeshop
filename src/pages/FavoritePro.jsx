@@ -23,10 +23,10 @@ const FavoritePro = () => {
         console.log("clicked");
         dispatch(setBasketOpen(!basketOpen))
     };
-    console.log(favoriteList)
+
     return (
         <>
-            <div style={{ display: "flex", justifyContent: "center", fontSize: "4rem", margin: "2rem", color: "orange" }}>FAVORİTE ITEMS</div>
+            <Typography variant="h2" color="orange" align="center" mt={2} >FAVORİTE ITEMS</Typography>
             <Box
                 xs={{ d: "flex" }}
                 display="flex"
@@ -35,6 +35,7 @@ const FavoritePro = () => {
                 flexWrap="wrap">
                 {favoriteList?.map((item, index) => {
                     return (
+
                         <Card sx={{ maxWidth: 250, minWidth: 250, maxHeight: 350, minHeight: 350, margin: 2, padding: 2, background: "##F5F5F5" }} key={index}>
 
                             <CardMedia
@@ -68,6 +69,7 @@ const FavoritePro = () => {
                                 </div>
                             </CardActions>
                         </Card>
+
                     )
                 }
                 )}

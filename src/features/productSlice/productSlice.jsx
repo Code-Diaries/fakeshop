@@ -21,8 +21,7 @@ export const getProduct = createAsyncThunk(
             const { data } = await axios(url);
             return data;
         } catch (error) {
-            console.log(error);
-            return rejectWithValue("Something went wrong");
+             return rejectWithValue("Something went wrong");
         }
     }
 );

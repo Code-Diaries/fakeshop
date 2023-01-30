@@ -18,8 +18,7 @@ export const getCategory = createAsyncThunk(
             const { data } = await axios(url);
             return data;
         } catch (error) {
-            console.log(error);
-            return rejectWithValue("Something went wrong");
+             return rejectWithValue("Something went wrong");
         }
     }
 );
@@ -42,8 +41,7 @@ const categorySlice = createSlice({
             .addCase(getCategory.fulfilled, (state, { payload }) => {
                 state.categoryList = payload;
                 state.loadingCategory = false;
-                console.log(payload)
-            })
+             })
             .addCase(getCategory.rejected, (state, { payload }) => {
                 state.loading = false;
                 state.errorCategory = payload;
