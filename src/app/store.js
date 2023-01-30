@@ -6,6 +6,7 @@ import filterReducer from "../features/filterSlice/filterSlice"
 import searchReducer from "../features/searchSlice/searchSlice";
 import darkmodeReducer from "../features/darkmodeSice/darkmodeSlice";
 import favoriteSliceReducer from "../features/favoriteSlice/favoriteSlice";
+import basketReducer from "../features/basketSlice/basketSlice";
 
 
 const store = configureStore({
@@ -16,9 +17,8 @@ const store = configureStore({
     search: searchReducer,
     favorite: favoriteSliceReducer,
     darkmode: darkmodeReducer,
-
     auth: authReducer,
-
+    basket: basketReducer
 
   },
 });

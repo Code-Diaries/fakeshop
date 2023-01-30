@@ -8,9 +8,21 @@ import Typography from '@mui/material/Typography';
 import { useLocation } from 'react-router';
 import CardMedia from '@mui/material/CardMedia';
 import { Rating } from '@mui/material';
+import { setBasketCount, setBasketItem, setBasketOpen } from '../features/basketSlice/basketSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 const ProductDetail = () => {
   const { state: item } = useLocation();
+  const dispatch = useDispatch()
+  const { basketOpen, basketItem } = useSelector((state) => state.basket);
+
+  const handleAddDetail = () => {
+    dispatch(setBasketOpen(basketOpen))
+    dispatch(setBasketItem(item))
+    dispatch(setBasketCount())
+    console.log("clicked");
+    dispatch(setBasketOpen(!basketOpen))
+  };
   console.log(item);
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
@@ -47,7 +59,8 @@ const ProductDetail = () => {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="large" style={{ background: "orange", color: "white" }}>ADD BASKET</Button>
+          <Button size="large" style={{ background: "orange", color: "white" }}
+            onClick={handleAddDetail}>ADD CHART</Button>
         </CardActions>
       </Card>
 

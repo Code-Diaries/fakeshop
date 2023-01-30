@@ -13,12 +13,24 @@ import FavoriteIcon from './FavoriteIcon';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToFavoriteList, removeFromFavouriteList } from '../../../features/favoriteSlice/favoriteSlice';
 import { useNavigate } from 'react-router';
+import { setBasketCount, setBasketItem, setBasketOpen } from '../../../features/basketSlice/basketSlice';
 
 
 const CardItem = ({ item, index }) => {
     const dispatch = useDispatch()
     const navigate = useNavigate();
     const { favoriteList } = useSelector(state => state.favorite)
+    const { basketOpen, basketItem } = useSelector((state) => state.basket);
+
+    const handleAdd = (item) => {
+        dispatch(setBasketOpen(basketOpen))
+        dispatch(setBasketItem(item))
+        dispatch(setBasketCount())
+        console.log("clicked");
+        dispatch(setBasketOpen(!basketOpen))
+    };
+    // console.log(basketOpen);
+    // console.log(basketItem);
 
     const favoriteHandler = (item) => {
 
@@ -67,10 +79,15 @@ const CardItem = ({ item, index }) => {
                 <Typography variant="h5" fontSize="1rem" color="orange" fontWeight="600" >
                     {item?.price} TL
                 </Typography>
-                <Box backgroundColor="orange" width="4rem" display="flex" padding="1rem" justifyContent="space-around">
-                    <RemoveRedEyeIcon    onClick={() => navigate("/productDetail", { state: item })} />
-                    <ShoppingBasketIcon />
-                </Box>
+
+                <div style={{ background: "#EDCF65", padding: "1rem", width: "4rem", display: "flex", justifyContent: "space-evenly" }}>
+                    <RemoveRedEyeIcon
+                        onClick={() => navigate("/productDetail", { state: item })} />
+                    <ShoppingBasketIcon
+                        onClick={() => handleAdd(item)}
+                    />
+                </div>
+
             </CardActions>
         </Card>
     )
