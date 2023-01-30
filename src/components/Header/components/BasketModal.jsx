@@ -112,7 +112,7 @@ const BasketModal = () => {
 
                                     <Card sx={{
                                         width: 250,
-                                        height: 120,
+                                        height: 150,
                                     }}
 
                                     >
