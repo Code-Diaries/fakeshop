@@ -11,7 +11,7 @@ const FavoriteIcon = ({ item }) => {
 
     return (
         <div>
-            {favoriteList?.includes(item) ? <FavoriteRoundedIcon style={{ fill: "orange" }} /> : <FavoriteBorderRoundedIcon />}
+            {favoriteList?.map((i) => i.id).includes(item.id) ? <FavoriteRoundedIcon style={{ fill: "orange" }} /> : <FavoriteBorderRoundedIcon />}
         </div>
     )
 }
