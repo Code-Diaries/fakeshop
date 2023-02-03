@@ -7,6 +7,10 @@ const FavoriteIcon = ({ item }) => {
 
     const { favoriteList } = useSelector(state => state.favorite)
     const dispatch = useDispatch()
+    
+    console.log(favoriteList)
+    console.log(favoriteList.map((i) => i.id))
+    console.log(item.id)
 
 
     return (
