@@ -60,7 +60,7 @@ const ProductDetail = () => {
         </CardContent>
         <CardActions>
           <Button size="large" style={{ background: "orange", color: "white" }}
-            onClick={handleAddDetail}>ADD CHART</Button>
+            onClick={handleAddDetail}>ADD CART</Button>
         </CardActions>
       </Card>
 
