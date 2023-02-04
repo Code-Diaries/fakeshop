@@ -161,7 +161,7 @@ const BasketModal = () => {
 
                         <Button size="small" style={{ background: "orange", color: "white" }}>BUY NOW</Button>
                         <Button size="small" style={{ background: "grey", color: "black" }}
-                            onClick={handleClear}>CLEAR CHART</Button>
+                            onClick={handleClear}>CLEAR CART</Button>
                     </Typography>
                 </Box>
             </Modal>
