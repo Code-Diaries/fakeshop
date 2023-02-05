@@ -85,7 +85,7 @@ const Navbar = () => {
 
           color="inherit"
         >
-          <Badge badgeContent={basketCount} color="error">
+          <Badge badgeContent={basketCount?.length ? basketCount : "0"} color="orange">
             <AddShoppingCartIcon
             />
           </Badge>
@@ -152,7 +152,7 @@ const Navbar = () => {
               size="large"
               aria-label="show 17 new notifications"
               color="inherit">
-              <Badge badgeContent={basketCount} color="error">
+              <Badge badgeContent={basketCount?.length ? basketCount : "0"} color="orange">
                 {/* burdaki badge contente state gelecek */}
                 <AddShoppingCartIcon
                   onClick={handleOpen}
