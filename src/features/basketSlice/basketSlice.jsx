@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
     basketItem: JSON.parse(localStorage.getItem('basket')) || [],
     basketOpen: false,
-    basketCount: (JSON.parse(localStorage.getItem('basket')))?.length || ""
+    basketCount: (JSON.parse(localStorage.getItem('basket')))?.length || "0"
 }
 
 const basketSlice = createSlice({
