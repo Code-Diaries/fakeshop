@@ -9,7 +9,7 @@ import ProductDetail from './pages/ProductDetail'
 import ShippingAdress from './pages/ShippingAdress'
 import PrivateRouter from './router/PrivateRouter'
 import FavoritePro from "./pages/FavoritePro"   
-
+import { Admin } from "react-admin";
 
 function App() {  
  
