@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from "react";
-//import blokPng from "../assets/blok.png";
-import { useNavigate } from "react-router-dom";
-//import { toastSuccessNotify, toastErrorNotify } from "../helpers/ToastNotify";
-import { useFormik } from "formik";
+import React, { useState} from "react";
+ import { useNavigate } from "react-router-dom";
+ import { useFormik } from "formik";
 import * as yup from "yup";
-//import { useAuth } from "../contexts/AuthContext";
-import loadingGif from "../assets/loading.gif";
+ import loadingGif from "../assets/loading.gif";
 import googlePng from "../assets/google.png";
 import {
   Avatar,
@@ -18,8 +15,8 @@ import {
   Box,
 } from "@mui/material";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { createUser, logIn, signUpWithGoogle } from "../auth/firebase";
-import { grey } from "@mui/material/colors";
+import {logIn, signUpWithGoogle } from "../auth/firebase";
+ 
 
 const validationSchema = yup.object({
   email: yup
@@ -39,16 +36,7 @@ const styles = {
       marginTop: 10,
       maxWidth: "500px",
     },
-  },
-//   image: {
-//     backgroundImage: "url(https://picsum.photos/1600/900)",
-//     backgroundRepeat: "no-repeat",
-//     backgroundColor: grey[50],
-//     backgroundSize: "cover",
-//     backgroundPosition: "center",
-//     width: "100%",
-//     paddingTop: "40px",
-//   },
+  }, 
   paper: {
     padding: 8,
     display: "flex",
@@ -140,23 +128,14 @@ function Login() {
     signUpWithGoogle(navigate);
 
   };
-  
-
-//   useEffect(() => {
-//     if (currentUser) {
-//       navigate("/");
-//     }  
-//   }, [currentUser, navigate]);
+   
 
   return (
-    <Grid container component="main" sx={styles.root}> 
-     {/* //ana konteynr  */}
+    <Grid container component="main" sx={styles.root}>  
       <CssBaseline />
       <Grid container justifyContent="center" sx={styles.image}>  
-      {/* // büyük bgfoto nun olduğu yer  */}
-        <Grid item xs={12} sm={8} md={5} m={5} component={Paper} elevation={6} square> 
-        {/* //* paper şeklind companent kabartmayı sağlıyor carddan farkı elevetion kabartma miktarını  squer şeklini  */}
-          <Box sx={styles.paper}>
+         <Grid item xs={12} sm={8} md={5} m={5} component={Paper} elevation={6} square> 
+           <Box sx={styles.paper}>
             <Avatar sx={styles.avatar}>
               <img src={AccountCircleIcon} alt="candela" />
             </Avatar>

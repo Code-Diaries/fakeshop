@@ -32,10 +32,8 @@ const style = {
 const BasketModal = () => {
     const { basketOpen, basketItem, basketCount } = useSelector((state) => state.basket);
     const dispatch = useDispatch();
-    const handleClose = () => dispatch(setBasketOpen(!basketOpen));
+    const handleClose = () => dispatch(setBasketOpen(!basketOpen)); 
 
-
-    console.log(basketItem);
     let filteredArr = basketItem?.reduce((acc, current) => {
 
         const x = acc?.find(item => item.id === current.id);
@@ -44,12 +42,10 @@ const BasketModal = () => {
         } else {
             return acc;
         }
-    }, [])
-    console.log(filteredArr);
+    }, []) 
 
     const handleDelete = (item) => {
-        dispatch(removeItemFromBasket(item))
-        console.log("delete");
+        dispatch(removeItemFromBasket(item)) 
     }
     const handleClear = () => {
         dispatch(clearAll())
@@ -58,30 +54,20 @@ const BasketModal = () => {
         dispatch(setBasketItem(item))
         dispatch(setBasketCount())
     }
-    const handleDecrease = (item) => {
-        console.log(basketItem?.findIndex((i) => i === item));
-
+    const handleDecrease = (item) => { 
         let index = basketItem?.findIndex((i) => i === item)
         let arrayforchange = [...basketItem]
-        arrayforchange.splice(index, 1)
-        console.log('arrayforchange', arrayforchange);
-
-        console.log(index);
-
-        console.log([...basketItem])
-        console.log(arrayforchange?.splice(index, 0))
+        arrayforchange.splice(index, 1) 
         dispatch(setBasketDecrease(arrayforchange))
         // dispatch(setBasketDecrease(basketItem?.slice(index, index + 1)))
-        // dispatch(setBasketItem(arrayforchange))
-        // console.log(basketItem)
+        // dispatch(setBasketItem(arrayforchange)) 
         dispatch(setBasketCount())
 
-    }
-    // console.log((basketItem?.reduce((acc, current) => acc + current?.price, 0)));
-    console.log(basketItem)
+    } 
     return (
         <div>
             <Modal
+                keepMounted
                 open={basketOpen}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
@@ -91,12 +77,7 @@ const BasketModal = () => {
                     <div >
                         {
 
-                            filteredArr?.map((item, index) => {
-
-                                // console.log(item);
-                                // console.log((basketItem?.filter((i) => i?.id === item?.id)));
-                                // console.log((basketItem?.filter((i) => i?.id !== item?.id)));
-
+                            filteredArr?.map((item, index) => { 
                                 return (<div style={{ display: "flex" }} key={index}>
                                     <Card>
                                         <CardMedia
@@ -105,9 +86,7 @@ const BasketModal = () => {
                                             height="100"
                                             image={item?.image}
                                             style={{ objectFit: "contain", background: "white", maxWidth: 70, minWidth: 70 }}
-                                        />
-
-
+                                        /> 
                                     </Card>
 
                                     <Card sx={{
@@ -146,9 +125,7 @@ const BasketModal = () => {
                                         </CardContent>
 
                                     </Card>
-
-
-
+ 
                                 </div>)
                             })
                         }

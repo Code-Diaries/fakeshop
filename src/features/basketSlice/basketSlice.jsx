@@ -10,19 +10,13 @@ const basketSlice = createSlice({
     name: "basket",
     initialState,
     reducers: {
-        setBasketItem: (state, { payload }) => {
-            console.log(payload)
+        setBasketItem: (state, { payload }) => { 
             state.basketItem = [...state.basketItem, payload]
-            localStorage.setItem('basket', JSON.stringify(state.basketItem))
-            console.log(state.basketItem);
-
+            localStorage.setItem('basket', JSON.stringify(state.basketItem))  
         },
-        setBasketCount: (state) => {
-
+        setBasketCount: (state) => { 
             state.basketCount = state.basketItem.length
-            localStorage.setItem('basketCount', JSON.stringify(state.basketCount))
-            console.log(state.basketCount);
-
+            localStorage.setItem('basketCount', JSON.stringify(state.basketCount))  
         },
         setBasketOpen: (state) => {
             state.basketOpen = !state.basketOpen;
@@ -39,12 +33,9 @@ const basketSlice = createSlice({
             state.basketCount = ""
             localStorage.setItem('basketCount', JSON.stringify(state.basketCount))
         },
-        setBasketDecrease: (state, { payload }) => {
-            console.log(payload)
+        setBasketDecrease: (state, { payload }) => { 
             state.basketItem = payload
-            localStorage.setItem('basket', JSON.stringify(state.basketItem))
-            console.log(state.basketItem);
-
+            localStorage.setItem('basket', JSON.stringify(state.basketItem))  
         },
     }
 });
