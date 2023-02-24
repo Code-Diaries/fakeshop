@@ -1,13 +1,9 @@
-import React from 'react'
-import Footer from '../components/Footer/Footer'
+import React from 'react' 
 import Header from '../components/Header/Header'
 
 const Home = () => {
-    return (
-        <>
-        <Header />
-        <Footer />
-        </>
+    return ( 
+        <Header /> 
     )
 }
 

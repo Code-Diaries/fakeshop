@@ -8,8 +8,7 @@ import {
     Box,
     FormControl,
     TextField,
-    Button,
-    Paper
+    Button
 } from "@mui/material";
 import AddIcCallIcon from '@mui/icons-material/AddIcCall';
 import MailIcon from '@mui/icons-material/Mail';
@@ -34,9 +33,8 @@ const Footer = () => {
 
 
     return ( <>
-     <Paper>
-        <Grid container justify="center" sx={{minHeight: "212px"}} style={{backgroundColor:"lightgrey"}}>
-
+      
+        <Grid container justify="center" noGutter sx={{minHeight: "212px"}} style={{backgroundColor:"lightgrey"}}> 
             <Grid item sm={3} xs={12} alignContent="flex-start">
                 <Typography >
                             <h3 >CONTACT</h3>
@@ -57,8 +55,7 @@ const Footer = () => {
                 <Box>
                     <Link href="#" style={{color:"black"}}>Do not sell my personal information</Link>
                 </Box>
-            </Grid>
-
+            </Grid> 
             <Grid item sm={3} xs={12}  >
                 <Box><h3>FOLLOW US</h3></Box>
                 <Box style={{display:"flex", flexDirection:"row",justifyContent:"center",alignContent:"center",margin:"0.5rem"}}> 
@@ -87,8 +84,7 @@ const Footer = () => {
                 </FormControl>
             </Grid>
             
-        </Grid>
-        </Paper>
+        </Grid> 
 
         <AppBar position="static" elevation={0} component="footer" color="default" >
             <Toolbar style={{ justifyContent:"center", alignItems:"center", minHeight:"20px"}}>
