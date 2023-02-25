@@ -21,12 +21,10 @@ const Header = () => {
       return (
         <>
             <BasketModal />
-            <div style={{ display: "flex", justifyContent: "space-between", marginTop: "2rem" }}> 
-                <div style={{ display: "flex", justifyContent: "end", width: "25rem" }}>
+            <Box display="flex" style={{ justifyContent: "left", marginTop: "2rem" }}>  
                     <CategoryCom />
-                    <PriceSorting />
-                </div> 
-            </div>
+                    <PriceSorting /> 
+            </Box>
             <>
                 {(errorFilter.length ? errorFilter : error) && (
                     <Typography variant="h3" color="error" align="center" mt={20}>

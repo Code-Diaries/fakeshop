@@ -1,7 +1,6 @@
 import * as React from 'react';
 import IconButton from '@mui/material/IconButton';
-import { Box, AppBar, Badge, Typography, MenuItem, Menu, Toolbar } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+import { Box, AppBar, Badge, Typography, MenuItem, Menu, Toolbar } from '@mui/material'; 
 import MoreIcon from '@mui/icons-material/MoreVert';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
@@ -90,7 +89,7 @@ const Navbar = () => {
 
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1 }}   >
       <AppBar position="static" sx={{ bgcolor: "warning.main" }}>
         <Toolbar>
           <Typography

@@ -27,7 +27,8 @@ const CategoryCom = () => {
     return (<>
         {!loadingCategory && (
             <Box
-                xs={{ d: "flex" }}
+               paddingRight="1rem"
+               paddingLeft="1rem"
                 display="flex"
                 alignItems="center"
                 justifyContent="space-evenly"
