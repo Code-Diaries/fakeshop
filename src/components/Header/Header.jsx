@@ -21,7 +21,7 @@ const Header = () => {
       return (
         <>
             <BasketModal />
-            <Box display="flex" style={{ justifyContent: "left", marginTop: "2rem" }}>  
+            <Box display="flex" style={{ justifyContent: "left", marginTop: "8rem" }}>  
                     <CategoryCom />
                     <PriceSorting /> 
             </Box>

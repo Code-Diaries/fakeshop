@@ -89,8 +89,9 @@ const Navbar = () => {
 
 
   return (
-    <Box sx={{ flexGrow: 1 }}   >
-      <AppBar position="static" sx={{ bgcolor: "warning.main" }}>
+    <>
+      <AppBar  position="static"
+           style={{ position: 'fixed', top: 0 , left : 0,  margin: 0}} sx={{ bgcolor: "orange" }}>
         <Toolbar>
           <Typography
             variant="h6"
@@ -153,7 +154,7 @@ const Navbar = () => {
       </AppBar>
       {renderMobileMenu}
       <BasketModal />
-    </Box>
+    </>
   );
 }
 export default Navbar

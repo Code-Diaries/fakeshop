@@ -12,12 +12,14 @@ import RoomIcon from '@mui/icons-material/Room';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import FacebookIcon from '@mui/icons-material/Facebook'; 
+import { orange } from '@mui/material/colors';
 
 
 
 const Footer = () => {
     return (<>
-        <Grid container direction="row" spacing={1} sx={{ minHeight: "212px" }} style={{ backgroundColor: "warning.main" }}>
+        <Grid container direction="row" spacing={1}  sx={{ minHeight: "212px" }}  position="static"
+         style={{ color: "white" , backgroundColor: 'orange'  }}>
             <Grid container sm={4} xs={12} direction="column" alignContent="center">
                 <Typography color="#ffffff" >
                     <h3 >CONTACT</h3>
