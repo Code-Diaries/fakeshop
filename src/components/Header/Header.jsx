@@ -3,41 +3,28 @@ import { useEffect } from "react";
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProduct, setFinalList } from '../../features/productSlice/productSlice';
-import { setFind } from '../../features/filterSlice/filterSlice';
-import CardItem from './components/CardItem';
-import SearchCom from './components/SearchCom';
-import CategoryCom from './components/CategoryCom';
+import { getProduct} from '../../features/productSlice/productSlice';
+ import CardItem from './components/CardItem';
+ import CategoryCom from './components/CategoryCom';
 import PriceSorting from './components/PriceSorting';
 import BasketModal from './components/BasketModal';
 
 
 const Header = () => {
-    const { productList, loading, error, finalList, sortingList } = useSelector((state) => state.product);
-    const { filteredList, find, loadingFilter, errorFilter } = useSelector((state) => state.filter);
-
-
-    const dispatch = useDispatch();
-    let displayArray = (filteredList.length ? filteredList : productList)
+    const {  loading, error, finalList, sortingList } = useSelector((state) => state.product);
+    const { loadingFilter, errorFilter } = useSelector((state) => state.filter);  
+    const dispatch = useDispatch(); 
 
     useEffect(() => {
         dispatch(getProduct())  
     }, []) 
-    dispatch(setFinalList(find?.length ? find : displayArray))
-     return (
+      return (
         <>
             <BasketModal />
-            <div style={{ display: "flex", justifyContent: "space-between", marginTop: "2rem" }}>
-                <div>
-                    <SearchCom productList={productList} filteredList={filteredList} setFind={setFind} />
-                </div>
-                <div style={{ display: "flex", justifyContent: "end", width: "25rem" }}>
+            <Box display="flex" style={{ justifyContent: "left", marginTop: "8rem" }}>  
                     <CategoryCom />
-                    <PriceSorting />
-                </div>
-
-
-            </div>
+                    <PriceSorting /> 
+            </Box>
             <>
                 {(errorFilter.length ? errorFilter : error) && (
                     <Typography variant="h3" color="error" align="center" mt={20}>

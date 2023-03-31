@@ -1,10 +1,8 @@
-import { configureStore } from "@reduxjs/toolkit";
-import authReducer from "../features/authSlice";
+import { configureStore } from "@reduxjs/toolkit"; 
 import categoryReducer from "../features/categorySlice/categorySlice";
 import productReducer from "../features/productSlice/productSlice"
 import filterReducer from "../features/filterSlice/filterSlice"
 import searchReducer from "../features/searchSlice/searchSlice";
-import darkmodeReducer from "../features/darkmodeSice/darkmodeSlice";
 import favoriteSliceReducer from "../features/favoriteSlice/favoriteSlice";
 import basketReducer from "../features/basketSlice/basketSlice";
 
@@ -15,9 +13,7 @@ const store = configureStore({
     category: categoryReducer,
     filter: filterReducer,
     search: searchReducer,
-    favorite: favoriteSliceReducer,
-    darkmode: darkmodeReducer,
-    auth: authReducer,
+    favorite: favoriteSliceReducer, 
     basket: basketReducer
 
   },

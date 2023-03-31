@@ -2,59 +2,51 @@ import React, { useEffect, useState, memo } from 'react'
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
- import Select from '@mui/material/Select';
+import Select from '@mui/material/Select';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCategory, setChoosen } from '../../../features/categorySlice/categorySlice';
 import { getFilter } from '../../../features/filterSlice/filterSlice';
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import { setSortingList } from '../../../features/productSlice/productSlice';
 
 
 const CategoryCom = () => {
-    const [select, setSelect] = useState("")
+    const [select, setSelect] = useState("");
     const dispatch = useDispatch();
-
-    const { categoryList, loadingCategory, errorCategory } = useSelector((state) => state.category);
- 
+    const { categoryList, loadingCategory } = useSelector((state) => state.category);
     const handleChange = (e) => {
         dispatch(setSortingList([]))
         e.preventDefault()
         dispatch(setChoosen(e.target.value))
         dispatch(getFilter())
-        setSelect("Select Category") 
+        setSelect(e.target.value)
     }
-    useEffect(() => { 
-        dispatch(getCategory()) 
+    useEffect(() => {
+        dispatch(getCategory())
     }, [])
     return (<>
-        {errorCategory && (
-            <Typography variant="h3" color="error" align="center" mt={20}>
-                err
-            </Typography>
-        )}
-        {loadingCategory && (
-            <Box display="flex" alignItems="center" justifyContent="center">
-                loading
-            </Box>
-        )}
         {!loadingCategory && (
             <Box
-                xs={{ d: "flex" }}
+               paddingRight="1rem"
+               paddingLeft="1rem"
                 display="flex"
                 alignItems="center"
                 justifyContent="space-evenly"
                 flexWrap="wrap"
             >
                 <FormControl style={{ width: "12rem" }}>
-                    <InputLabel id="demo-simple-select-label">Select Category</InputLabel>
+                    <InputLabel id="demo-simple-select-label"
+                    > Select Category</InputLabel>
                     <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
-                        label="Select Category"
+                        label={select}
                         onChange={handleChange}
                         value={select}
                     >
+                        <MenuItem value="">
+                            <em>None</em>
+                        </MenuItem>
                         {categoryList?.map((item, index) => (
                             <MenuItem value={item} key={index}>{item}</MenuItem>
                         ))}

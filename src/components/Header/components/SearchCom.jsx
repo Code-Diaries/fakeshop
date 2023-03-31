@@ -65,7 +65,7 @@ const SearchCom = ({ productList, setFind, filteredList }) => {
         dispatch(setSearch(""))
     }
     return (
-        <Box sx={{ flexGrow: 1 }} onSubmit={handleSubmit} component="form" style={{ width: 200 }}>
+        <Box sx={{ flexGrow: 1  }} onSubmit={handleSubmit}  component="form" style={{ width: 200 }}>
             <Search >
                 <SearchIconWrapper>
                     <SearchIcon />
@@ -74,7 +74,7 @@ const SearchCom = ({ productList, setFind, filteredList }) => {
                     placeholder="Search.."
                     inputProps={{ 'aria-label': 'search' }}
                     onChange={(e) => dispatch(setSearch(e.target.value))}
-                    value={search}
+                    value={search} 
                 />
             </Search>
         </Box>
